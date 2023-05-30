@@ -1,0 +1,90 @@
+// Fonts
+// Mobile Text Styles
+@mixin mobile__page-header{
+    font-size: 24px;
+    line-height: 632px;
+    font-weight: 700;
+}
+@mixin mobile__section-header{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+@mixin mobile__subheader{
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+}
+@mixin mobile__body-copy{
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+}
+@mixin mobile__footer-copy{
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+}
+@mixin mobile__labels-buttons{
+    font-size: 10px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+
+// Desktop & Tablet Text Styles
+@mixin desktop__page-header{
+    font-size: 60px;
+    line-height: 68px;
+    font-weight: 700;
+}
+@mixin desktop__section-header{
+    font-size: 36px;
+    line-height: 44px;
+    font-weight: 700;
+}
+@mixin desktop__subheader{
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+@mixin desktop__body-copy{
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+}
+@mixin desktop__footer-copy{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+}
+@mixin desktop__labels-buttons{
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+
+// Colors
+$primary-black:#323232; //BandSite-Black
+$primary-silver: #AFAFAF; //Silver
+$primary-white: #FFFFFF; //White
+
+$secondary-black: #000000; //BandSite-DarkBlack
+$secondary-mercury: #E1E1E1; //Mercury
+$secondary-alabaster: #FAFAFA; //Alabaster
+
+
+// Media Query
+@mixin tablet {
+    @media (min-width:1280px){
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width:768px){
+        @content;
+    }
+}
+
