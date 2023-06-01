@@ -1,12 +1,12 @@
 // Media Query
-@mixin tablet {
-    @media (min-width: 1280px){
+@mixin desktop {
+    @media screen and (min-width: 1280px){
         @content;
     }
 }
 
-@mixin desktop {
-    @media (min-width: 768px){
+@mixin tablet {
+    @media screen and (min-width: 768px){
         @content;
     }
 }
@@ -16,7 +16,7 @@
 // Mobile Text Styles
 @mixin mobile__page-header{
     font-size: 24px;
-    line-height: 632px;
+    line-height: 32px;
     font-weight: 700;
 }
 @mixin mobile__section-header{
