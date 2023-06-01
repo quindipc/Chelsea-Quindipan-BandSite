@@ -12,8 +12,7 @@
     text-align: center;
 
     &__nav {
-        color: $primary-white;
-        @include mobile__subheader;
+        @include mobile__body-copy;
     }
 
     &__logo--container {
@@ -30,12 +29,28 @@
     &__navlist {
         display: flex;
         list-style: none;
+        align-items: flex-end;
     }
 
     &__navlist--item {
+        position: relative;
         text-decoration: none;
         list-style: none;
-        margin-right: .625rem;
+        margin-right: 3rem;
+        margin-left: 3rem;
+        top: 1rem;
+        padding-bottom: .5rem;
+    }
+
+    &__navlist--item.active {
+        color: $primary-white;
+        border-bottom: .25rem solid white;
+        font-weight: 700;
+    }
+
+    &__navlist--item.unactive {
+        border-bottom: .25rem solid transparent;
+        color: $secondary-mercury;
     }
 }
 
@@ -70,7 +85,7 @@
         position: absolute;
         background-color: rgba(50, 50, 50, 0.5);
         width: 100%;
-        height: 100%;
+        height: 97.5%;
         z-index: 2;
     }
 }
@@ -82,6 +97,7 @@
 
     &__title {
         padding-bottom: 1rem;
+        @include mobile__section-header;
     }
 
     &__image {
@@ -90,6 +106,17 @@
 
     &__quote {
         padding: 1rem 0 1.5rem;
+        @include mobile__subheader;
+    }
+
+    &__subheading {
+        @include mobile__subheader;
+        margin-bottom: 1rem;
+    }
+
+    &__info {
+        @include mobile__body-copy;
+        margin-bottom: 1rem;
     }
 }
 
@@ -118,18 +145,6 @@
     &__image {
         padding: 1rem;
         font-size: 5rem;
-
-        //         @include tablet {
-        //             // width: 40%;
-        //             // margin: 3vw 0;
-        // background-color: green;
-        //         }
-
-        // @include desktop {
-        //     width: 30%;
-        //     margin: 1.25vw 0;
-
-        // }
     }
 
 
@@ -155,7 +170,7 @@
     }
 
     &__title {
-        // @include mobile__page-header;
+        @include mobile__page-header;
     }
 
     &__icon {
@@ -169,13 +184,9 @@
 
     }
 
-    &__subheading {}
-
     &__info--container {
         margin-bottom: 1rem;
     }
-
-    &__info {}
 
     &__logo--tablet {
         display: none;
