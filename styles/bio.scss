@@ -5,34 +5,52 @@
 // Header Styles
 .header {
     background: $primary-black;
-    padding: 5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 
     &__nav {
-        color: $primary-white;
+        @include mobile__body-copy;
     }
 
-    &__logo-container {
+    &__logo--container {
         display: flex;
         justify-content: center;
         align-content: center;
     }
 
     &__logo {
-    height: 20px;
-    width: 120px;
+        max-height: 1.25rem;
+        max-width: 7.5rem;
     }
 
     &__navlist {
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-content: space-evenly;
+        list-style: none;
+        align-items: flex-end;
     }
 
-    &__navlist-item {
+    &__navlist--item {
+        position: relative;
         text-decoration: none;
         list-style: none;
+        margin-right: 3rem;
+        margin-left: 3rem;
+        top: 1rem;
+        padding-bottom: .5rem;
+    }
 
+    &__navlist--item.active {
+        color: $primary-white;
+        border-bottom: .25rem solid white;
+        font-weight: 700;
+    }
+
+    &__navlist--item.unactive {
+        border-bottom: .25rem solid transparent;
+        color: $secondary-mercury;
     }
 }
 
@@ -40,58 +58,137 @@
 .hero {
     display: flex;
 
-
-    &__container {}
+    &__container {
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
 
     &__title {
         @include mobile__page-header;
-        z-index: 1;
+        position: absolute;
+        z-index: 3;
+        color: $primary-white;
+        top: 50%;
+        margin-left: 1rem;
+        transform: translateY(-50%);
     }
 
     &__image {
+        position: relative;
+        width: 100%;
+        z-index: 1;
+    }
+
+    &__container--image::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(50, 50, 50, 0.5);
+        width: 100%;
+        height: 97.5%;
         z-index: 2;
     }
 }
 
 
 // About Styles
-.about {}
+.about {
+    padding: 1.5rem 1rem;
 
+    &__title {
+        padding-bottom: 1rem;
+        @include mobile__section-header;
+    }
 
+    &__image {
+        width: 100%;
+    }
 
-// Gallery Styles
-.gallery {
-    display: flex;
-    margin: 0 20px;
+    &__quote {
+        padding: 1rem 0 1.5rem;
+        @include mobile__subheader;
+    }
 
+    &__subheading {
+        @include mobile__subheader;
+        margin-bottom: 1rem;
+    }
 
-    &__title {}
-
-    &__container {
-        flex-direction: column;
-
-        &__image {
-            width: 200px;
-
-            @include tablet {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
-                align-content: space-evenly;
-                background-color: green;
-            }
-
-            @include desktop {
-                flex-direction: column;
-                flex-wrap: wrap;
-                justify-content: space-evenly;
-                align-content: space-evenly;
-                background-color: red;
-            }
-        }
+    &__info {
+        @include mobile__body-copy;
+        margin-bottom: 1rem;
     }
 }
 
 
 
+.gallery {
+
+    &__title {
+        padding-left: 1rem;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        background-color: $secondary-alabaster;
+        padding-top: 1.5rem;
+    }
+
+    @include tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+    }
+
+    &__image {
+        padding: 1rem;
+        font-size: 5rem;
+    }
+
+
+}
+
 // Footer Styles 
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    color: $primary-white;
+    background-color: $primary-black;
+    padding: 1rem;
+    @include mobile__footer-copy;
+
+    &__container {
+        margin-top: 1.5rem;
+    }
+
+    &__container--copyright {
+        padding-top: 3rem;
+        @include mobile__footer-copy;
+    }
+
+    &__title {
+        @include mobile__page-header;
+    }
+
+    &__icon {
+        flex-direction: row;
+        padding-right: 1rem;
+        padding-top: 1rem;
+    }
+
+    &__subheading--container {
+        margin-bottom: 1rem;
+
+    }
+
+    &__info--container {
+        margin-bottom: 1rem;
+    }
+
+    &__logo--tablet {
+        display: none;
+    }
+}
