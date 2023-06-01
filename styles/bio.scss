@@ -16,7 +16,7 @@
         @include mobile__subheader;
     }
 
-    &__logo-container {
+    &__logo--container {
         display: flex;
         justify-content: center;
         align-content: center;
@@ -32,7 +32,7 @@
         list-style: none;
     }
 
-    &__navlist-item {
+    &__navlist--item {
         text-decoration: none;
         list-style: none;
         margin-right: .625rem;
@@ -48,24 +48,24 @@
         text-align: center;
         width: 100%;
     }
-    
+
     &__title {
         @include mobile__page-header;
         position: absolute;
         z-index: 3;
         color: $primary-white;
         top: 50%;
-        left: 3.125rem;
+        margin-left: 1rem;
         transform: translateY(-50%);
     }
-    
+
     &__image {
         position: relative;
         width: 100%;
         z-index: 1;
     }
-    
-    &__container-image::before {
+
+    &__container--image::before {
         content: "";
         position: absolute;
         background-color: rgba(50, 50, 50, 0.5);
@@ -80,9 +80,10 @@
 .about {
     padding: 1.5rem 1rem;
 
-    &__title{
+    &__title {
         padding-bottom: 1rem;
     }
+
     &__image {
         width: 100%;
     }
@@ -96,9 +97,15 @@
 
 .gallery {
 
+    &__title {
+        padding-left: 1rem;
+    }
+
     &__container {
         display: flex;
         flex-direction: column;
+        background-color: $secondary-alabaster;
+        padding-top: 1.5rem;
     }
 
     @include tablet {
@@ -125,9 +132,52 @@
         // }
     }
 
-    
+
 }
 
-
-
 // Footer Styles 
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    color: $primary-white;
+    background-color: $primary-black;
+    padding: 1rem;
+    @include mobile__footer-copy;
+
+    &__container {
+        margin-top: 1.5rem;
+    }
+
+    &__container--copyright {
+        padding-top: 3rem;
+        @include mobile__footer-copy;
+    }
+
+    &__title {
+        // @include mobile__page-header;
+    }
+
+    &__icon {
+        flex-direction: row;
+        padding-right: 1rem;
+        padding-top: 1rem;
+    }
+
+    &__subheading--container {
+        margin-bottom: 1rem;
+
+    }
+
+    &__subheading {}
+
+    &__info--container {
+        margin-bottom: 1rem;
+    }
+
+    &__info {}
+
+    &__logo--tablet {
+        display: none;
+    }
+}
