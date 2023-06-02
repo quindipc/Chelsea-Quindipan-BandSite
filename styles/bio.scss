@@ -10,48 +10,89 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-
+    
+    @include tablet {
+        @include desktop__body-copy;
+        padding: 1rem 2.25rem;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    @include desktop {
+        padding: auto;
+    }
+    
     &__nav {
         @include mobile__body-copy;
+        
+        // Tablet and Desktop 
+        @include tablet {
+            @include desktop__body-copy;
+            display: flex;
+            align-items: center;
+        }
+        
     }
-
+    
     &__logo--container {
         display: flex;
         justify-content: center;
-        align-content: center;
     }
-
+    
     &__logo {
         max-height: 1.25rem;
         max-width: 7.5rem;
     }
-
+    
     &__navlist {
         display: flex;
         list-style: none;
         align-items: flex-end;
     }
-
+    
+    
     &__navlist--item {
         position: relative;
-        text-decoration: none;
-        list-style: none;
         margin-right: 3rem;
         margin-left: 3rem;
         top: 1rem;
         padding-bottom: .5rem;
+        
+        @include tablet {
+            padding-bottom: 1.5rem;
+        }
     }
 
-    &__navlist--item.active {
+    &__navlist--hover {
         color: $primary-white;
+        text-decoration: none;
+        list-style: none;
+    }
+    
+    &__navlist--hover:hover {
+        color: $primary-white;
+        padding-bottom: .7rem;
+        border-bottom: .25rem solid white;
+        cursor: pointer;
+
+        @include tablet {
+            padding-bottom: 1.7rem;
+        }
+    }
+    
+    &__navlist--item.active {
         border-bottom: .25rem solid white;
         font-weight: 700;
     }
-
+    
     &__navlist--item.unactive {
         border-bottom: .25rem solid transparent;
         color: $secondary-mercury;
     }
+
+
 }
 
 // Hero Styles
@@ -72,6 +113,12 @@
         top: 50%;
         margin-left: 1rem;
         transform: translateY(-50%);
+
+        @include tablet {
+            @include desktop__page-header;
+            padding: 2.25rem;
+        }
+
     }
 
     &__image {
@@ -87,6 +134,12 @@
         width: 100%;
         height: 97.5%;
         z-index: 2;
+        overflow: hidden;
+
+        @include tablet {
+            height: 100%;
+            overflow: hidden;
+        }
     }
 }
 
@@ -95,28 +148,96 @@
 .about {
     padding: 1.5rem 1rem;
 
+    @include tablet {
+        padding: 2.25rem 3rem;
+    }
+
     &__title {
         padding-bottom: 1rem;
         @include mobile__section-header;
+
+        @include tablet {
+            padding-bottom: 2.25rem;
+            @include desktop__section-header;
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__image {
         width: 100%;
+
+        @include tablet {
+            width: 75%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__container--text {
+        @include tablet {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
     }
 
     &__quote {
-        padding: 1rem 0 1.5rem;
+        padding-top: 1rem;
+        @include mobile__subheader;
+
+        @include tablet {
+            @include desktop__subheader;
+        }
+    }
+
+    &__quote--author {
         @include mobile__subheader;
     }
 
     &__subheading {
         @include mobile__subheader;
-        margin-bottom: 1rem;
+        padding: 1.5rem 0 1rem;
+
+        @include tablet {
+            @include desktop__subheader;
+
+        }
     }
 
     &__info {
         @include mobile__body-copy;
         margin-bottom: 1rem;
+
+        @include tablet {
+            @include desktop__body-copy;
+            margin-right: 1rem;
+        }
+    }
+
+    &__info--container {
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+        }
     }
 }
 
@@ -126,6 +247,12 @@
 
     &__title {
         padding-left: 1rem;
+        @include mobile__section-header;
+
+        @include tablet {
+            padding-left: 3.8rem;
+            @include desktop__section-header;
+        }
     }
 
     &__container {
@@ -133,21 +260,35 @@
         flex-direction: column;
         background-color: $secondary-alabaster;
         padding-top: 1.5rem;
+
+        @include tablet {
+            padding-top: 3rem;
+        }
     }
 
-    @include tablet {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-content: space-evenly;
+    &__container--images {
+        @include tablet {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 3rem;
+        }
     }
+
 
     &__image {
         padding: 1rem;
-        font-size: 5rem;
+        width: 100%;
+        filter: grayscale(1);
+
+        @include tablet {
+            width: 33.33%;
+        }
     }
 
-
+    &__image:hover {
+        filter:none;
+        cursor: pointer;
+    }
 }
 
 // Footer Styles 
@@ -160,10 +301,47 @@
     padding: 1rem;
     @include mobile__footer-copy;
 
+    @include tablet {
+        padding: 2rem 3rem;
+    }
+
     &__container {
         margin-top: 1.5rem;
     }
+    
+    &__container--space {
+        @include tablet {
+            padding-left: 3rem;
+        }   
+    }
 
+    &__container--one {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 0;
+        }
+    }
+
+    &__container--icons {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+             align-items: baseline;
+        }
+
+    }
+
+    &__container--contact {
+
+        @include tablet {
+            display: flex; 
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    }
+    
     &__container--copyright {
         padding-top: 3rem;
         @include mobile__footer-copy;
@@ -177,6 +355,10 @@
         flex-direction: row;
         padding-right: 1rem;
         padding-top: 1rem;
+
+        @include tablet {
+            padding-left: 1rem;
+        }
     }
 
     &__subheading--container {
@@ -190,5 +372,16 @@
 
     &__logo--tablet {
         display: none;
+
+        @include tablet {
+            display: flex;
+        }
     }
+
+    &__logo--mobile {
+        @include tablet {
+            display: none;
+        }
+    }
+
 }
