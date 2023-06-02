@@ -162,7 +162,6 @@
     &__image {
         width: 100%;
 
-
         @include tablet {
             width: 75%;
             display: flex;
@@ -207,6 +206,7 @@
     &__info {
         @include mobile__body-copy;
         margin-bottom: 1rem;
+
         @include tablet {
             @include desktop__body-copy;
             margin-right: 1rem;
@@ -263,53 +263,102 @@
         width: 100%;
 
         @include tablet {
-            width: 50%;
-        }
-
-        @include desktop {
-            width: 33%;
+            width: 33.33%;
         }
     }
 }
-    // Footer Styles 
 
-    .footer {
-        display: flex;
-        flex-direction: column;
-        color: $primary-white;
-        background-color: $primary-black;
-        padding: 1rem;
-        @include mobile__footer-copy;
+// Footer Styles 
 
-        &__container {
-            margin-top: 1.5rem;
-        }
+.footer {
+    display: flex;
+    flex-direction: column;
+    color: $primary-white;
+    background-color: $primary-black;
+    padding: 1rem;
+    @include mobile__footer-copy;
 
-        &__container--copyright {
-            padding-top: 3rem;
-            @include mobile__footer-copy;
-        }
+    @include tablet {
+        padding: 2rem 3rem;
+    }
 
-        &__title {
-            @include mobile__page-header;
-        }
+    &__container {
+        margin-top: 1.5rem;
+    }
+    
+    &__container--space {
+        @include tablet {
+            padding-left: 3rem;
+        }   
+    }
 
-        &__icon {
+    &__container--one {
+        @include tablet {
+            display: flex;
             flex-direction: row;
-            padding-right: 1rem;
-            padding-top: 1rem;
+            justify-content: space-between;
+            margin-top: 0;
+        }
+    }
+
+    &__container--icons {
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+             align-items: baseline;
         }
 
-        &__subheading--container {
-            margin-bottom: 1rem;
+    }
 
+    &__container--contact {
+
+        @include tablet {
+            display: flex; 
+            justify-content: flex-start;
+            align-items: flex-start;
         }
+    }
+    
+    &__container--copyright {
+        padding-top: 3rem;
+        @include mobile__footer-copy;
+    }
 
-        &__info--container {
-            margin-bottom: 1rem;
+    &__title {
+        @include mobile__page-header;
+    }
+
+    &__icon {
+        flex-direction: row;
+        padding-right: 1rem;
+        padding-top: 1rem;
+
+        @include tablet {
+            padding-left: 1rem;
         }
+    }
 
-        &__logo--tablet {
+    &__subheading--container {
+        margin-bottom: 1rem;
+
+    }
+
+    &__info--container {
+        margin-bottom: 1rem;
+    }
+
+    &__logo--tablet {
+        display: none;
+
+        @include tablet {
+            display: flex;
+        }
+    }
+
+    &__logo--mobile {
+        @include tablet {
             display: none;
         }
     }
+
+}
