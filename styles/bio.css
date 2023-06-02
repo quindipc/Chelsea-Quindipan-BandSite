@@ -80,8 +80,6 @@ body {
 }
 .header__navlist--item {
   position: relative;
-  text-decoration: none;
-  list-style: none;
   margin-right: 3rem;
   margin-left: 3rem;
   top: 1rem;
@@ -92,8 +90,23 @@ body {
     padding-bottom: 1.5rem;
   }
 }
-.header__navlist--item.active {
+.header__navlist--hover {
   color: #FFFFFF;
+  text-decoration: none;
+  list-style: none;
+}
+.header__navlist--hover:hover {
+  color: #FFFFFF;
+  padding-bottom: 0.7rem;
+  border-bottom: 0.25rem solid white;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .header__navlist--hover:hover {
+    padding-bottom: 1.7rem;
+  }
+}
+.header__navlist--item.active {
   border-bottom: 0.25rem solid white;
   font-weight: 700;
 }
