@@ -308,11 +308,16 @@ body {
 .gallery__image {
   padding: 1rem;
   width: 100%;
+  filter: grayscale(1);
 }
 @media screen and (min-width: 768px) {
   .gallery__image {
     width: 33.33%;
   }
+}
+.gallery__image:hover {
+  filter: none;
+  cursor: pointer;
 }
 
 .footer {

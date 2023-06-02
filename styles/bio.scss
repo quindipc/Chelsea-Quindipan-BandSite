@@ -278,10 +278,16 @@
     &__image {
         padding: 1rem;
         width: 100%;
+        filter: grayscale(1);
 
         @include tablet {
             width: 33.33%;
         }
+    }
+
+    &__image:hover {
+        filter:none;
+        cursor: pointer;
     }
 }
 
