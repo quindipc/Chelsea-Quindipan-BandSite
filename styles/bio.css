@@ -392,6 +392,11 @@ body {
 .footer__info--container {
   margin-bottom: 1rem;
 }
+.footer__mailto {
+  color: #FFFFFF;
+  text-decoration: none;
+  cursor: pointer;
+}
 .footer__logo--tablet {
   display: none;
 }
