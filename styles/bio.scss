@@ -125,7 +125,7 @@
     &__image {
         position: relative;
         width: 100%;
-        z-index: 1; 
+        z-index: 1;
     }
 
     &__container--image::before {
@@ -280,16 +280,22 @@
     &__image {
         padding: 1rem;
         width: 100%;
-        filter: grayscale(1);
-
+        
         @include tablet {
             width: 33.33%;
         }
     }
-
-    &__image:hover {
-        filter: none;
-        cursor: pointer;
+    
+    @include desktop {
+        &__image {
+            filter: grayscale(1);
+            
+        }
+        
+        &__image:hover {
+            filter: none;
+            cursor: pointer;
+        }
     }
 }
 
@@ -304,7 +310,7 @@
     @include mobile__footer-copy;
 
     @include tablet {
-        padding: 2rem 3rem;
+        padding: 2.25rem 3rem;
     }
 
     &__container {
@@ -355,7 +361,7 @@
 
     &__icon {
         flex-direction: row;
-        padding-right: 1rem;
+        padding-right: 2rem;
         padding-top: 1rem;
 
         @include tablet {

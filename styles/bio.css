@@ -310,16 +310,20 @@ body {
 .gallery__image {
   padding: 1rem;
   width: 100%;
-  filter: grayscale(1);
 }
 @media screen and (min-width: 768px) {
   .gallery__image {
     width: 33.33%;
   }
 }
-.gallery__image:hover {
-  filter: none;
-  cursor: pointer;
+@media screen and (min-width: 1280px) {
+  .gallery__image {
+    filter: grayscale(1);
+  }
+  .gallery__image:hover {
+    filter: none;
+    cursor: pointer;
+  }
 }
 
 .footer {
@@ -334,7 +338,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .footer {
-    padding: 2rem 3rem;
+    padding: 2.25rem 3rem;
   }
 }
 .footer__container {
@@ -380,7 +384,7 @@ body {
 }
 .footer__icon {
   flex-direction: row;
-  padding-right: 1rem;
+  padding-right: 2rem;
   padding-top: 1rem;
 }
 @media screen and (min-width: 768px) {
