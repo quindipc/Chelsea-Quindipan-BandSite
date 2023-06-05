@@ -1,0 +1,21 @@
+@use "./partials/resets";
+@use "./partials/variables"as *;
+@use "./partials/mixins"as *;
+
+.hero {
+
+    &__album {
+        @include mobile__subheader;
+        position: absolute;
+        z-index: 3;
+        color: $primary-white;
+        top: 50%;
+        margin-left: 1rem;
+        transform: translateY(-50%);
+
+        @include tablet {
+            @include desktop__subheader;
+            padding: 2.25rem;
+        }
+    }
+}
