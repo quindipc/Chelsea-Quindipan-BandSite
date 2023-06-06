@@ -2,6 +2,7 @@
 @use "./partials/variables"as *;
 @use "./partials/mixins"as *;
 
+// HERO STYLES
 .hero {
 
     &__album {
@@ -18,5 +19,31 @@
             padding: 2.25rem;
         }
     }
+}
+
+
+// SHOWS STYLES
+.shows {
+    
+    // padding: 1.5rem 1rem;
+
+    &__title {
+        padding-bottom: 1rem;
+        @include mobile__section-header;
+    }
+
+    &__subheader {
+        @include mobile__body-copy;
+        color: $primary-silver;
+        text-transform: uppercase;
+    }
+
+
+    &__divider{
+        border: none;
+        border-top: .0625rem solid $secondary-mercury;
+        margin: .625rem 0;
+        width: 100%;
+      }
 
 }
