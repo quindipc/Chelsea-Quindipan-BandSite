@@ -124,6 +124,7 @@ body {
         top: 50%;
         margin-left: 1rem;
         transform: translateY(-50%);
+        text-align: left;
 
         @include tablet {
             @include desktop__page-header;

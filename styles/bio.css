@@ -134,6 +134,7 @@ body {
   top: 50%;
   margin-left: 1rem;
   transform: translateY(-50%);
+  text-align: left;
 }
 @media screen and (min-width: 768px) {
   .hero__title {
