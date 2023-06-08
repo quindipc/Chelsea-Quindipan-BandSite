@@ -19,17 +19,38 @@
             padding: 2.25rem;
         }
     }
+
+    &__overlay {
+        display:flex; 
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 30rem;
+        height: 10rem;
+        z-index: 4;
+    }
+
+    &__music {
+            width: 100%;
+            height: 100%;
+            border: none;
+    }
+
 }
 
 
-// SHOWS STYLES
+
 .shows {
-    
     // padding: 1.5rem 1rem;
 
+
     &__title {
-        padding-bottom: 1rem;
+        padding: 1rem;
         @include mobile__section-header;
+    }
+
+    &__list-item {
+        padding: 1rem;
     }
 
     &__subheader {
@@ -38,12 +59,20 @@
         text-transform: uppercase;
     }
 
+    &__button {
+        height: 2.5rem;
+        background-color: $primary-black;
+        color: white;
+        padding: 2rem;
+        max-width: 9.375rem;
+        text-align: center;
+    }
 
-    &__divider{
+    &__divider {
         border: none;
         border-top: .0625rem solid $secondary-mercury;
         margin: .625rem 0;
         width: 100%;
-      }
+    }
 
 }

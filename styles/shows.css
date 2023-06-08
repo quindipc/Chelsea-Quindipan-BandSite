@@ -276,12 +276,29 @@ body {
     padding: 2.25rem;
   }
 }
+.hero__overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 30rem;
+  height: 10rem;
+  z-index: 4;
+}
+.hero__music {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
 .shows__title {
-  padding-bottom: 1rem;
+  padding: 1rem;
   font-size: 24px;
   line-height: 32px;
   font-weight: 700;
+}
+.shows__list-item {
+  padding: 1rem;
 }
 .shows__subheader {
   font-size: 13px;
@@ -289,6 +306,14 @@ body {
   font-weight: 400;
   color: #AFAFAF;
   text-transform: uppercase;
+}
+.shows__button {
+  height: 2.5rem;
+  background-color: #323232;
+  color: white;
+  padding: 2rem;
+  max-width: 9.375rem;
+  text-align: center;
 }
 .shows__divider {
   border: none;

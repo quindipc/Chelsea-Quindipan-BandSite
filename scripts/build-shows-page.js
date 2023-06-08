@@ -1,7 +1,4 @@
-// Hero
-
-
-//  Shows
+//  Shows info
 let showsHeader = "Shows";
 
 let shows = [{
@@ -36,71 +33,61 @@ let shows = [{
     },
 ]
 
+// Parent Container for shows
+let showsContainer = document.querySelector(".shows__list");
 
-
-// Parent Container for Shows
-let showsContainer = document.querySelector(".shows");
-
+// Create a header for the shows container
 let headerTitle = document.createElement("h2");
 headerTitle.classList.add("shows__title");
 headerTitle.textContent = showsHeader;
-
 showsContainer.appendChild(headerTitle);
 
-// Loop to iterate over the shows
+// Loop to iterate over the shows array
 for (let show of shows) {
-    displayShows(show);
+    createShowItem(show);
 }
 
-function displayShows(show) {
+// Creates a show item
+function createShowItem(show) {
     let showsItemList = document.createElement("div");
-    showsItemList.classList.add("shows__list--item");
+    showsItemList.classList.add("shows__list-item");
 
+    // Appends the date, venue, location, and button
+    appendSubheader(showsItemList, "Date", show.date);
+    appendSubheader(showsItemList, "Venue", show.venue);
+    appendSubheader(showsItemList, "Location", show.location);
+    appendButton(showsItemList, "Buy Tickets");
 
-    // Date
-    let showsDateHeader = document.createElement("h3");
-    showsDateHeader.classList.add("shows__subheader");
-    showsDateHeader.textContent = "Date";
-    showsItemList.appendChild(showsDateHeader);
+    // Append to the shows container
+    showsContainer.appendChild(showsItemList);
+    appendDividerLine();
+}
 
-    let showsDate = document.createElement("p");
-    showsDate.classList.add("shows__info");
-    showsDate.textContent = show.date;
-    showsItemList.appendChild(showsDate);
+// Create a function to add the shows subheader and shows info to the parent
+function appendSubheader(parent, label, text) {
+    let subheader = document.createElement("h3");
+    subheader.classList.add("shows__subheader");
+    subheader.textContent = label;
 
-    // Venue
-    let showsVenueHeader = document.createElement("h3");
-    showsVenueHeader.classList.add("shows__subheader");
-    showsVenueHeader.textContent = "Venue";
-    showsItemList.appendChild(showsVenueHeader);
+    let info = document.createElement("p");
+    info.classList.add("shows__info");
+    info.textContent = text;
 
-    let showsVenue = document.createElement("p");
-    showsVenue.classList.add("shows__info");
-    showsVenue.textContent = show.venue;
-    showsItemList.appendChild(showsVenue);
+    parent.appendChild(subheader);
+    parent.appendChild(info);
+}
 
-    // Location
-    let showsLocationHeader = document.createElement("h3");
-    showsLocationHeader.classList.add("shows__subheader");
-    showsLocationHeader.textContent = "Location";
-    showsItemList.appendChild(showsLocationHeader);
+// Create a function for the button to append to parent
+function appendButton(parent, text) {
+    let button = document.createElement("button");
+    button.classList.add("shows__button");
+    button.textContent = text;
+    parent.appendChild(button);
+}
 
-    let showsLocation = document.createElement("p");
-    showsLocation.classList.add("shows__info");
-    showsLocation.textContent = show.location;
-    showsItemList.appendChild(showsLocation);
-
-    // Button
-    let showsButton = document.createElement("button");
-    showsButton.classList.add("shows__Button");
-    showsButton.textContent = "Buy Tickets";
-    showsItemList.appendChild(showsButton);
-
-    // Divider
+// Create a function to append a divider line in the shows container
+function appendDividerLine() {
     let dividerLine = document.createElement("hr");
     dividerLine.classList.add("shows__divider");
-    showsItemList.appendChild(dividerLine);
-
-
-    showsContainer.appendChild(showsItemList);
+    showsContainer.appendChild(dividerLine);
 }
