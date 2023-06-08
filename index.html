@@ -104,16 +104,20 @@
         </section>
 
 
-        <section class="comments">
-            <h2>Join the Conversation</h2>
-            <form>
-                <label for="name">Name</label><br>
-                <input type="text" id="name" name="name" value="Enter your name"><br>
-                <label for="comment">Comment</label><br>
-                <input type="text" id="comment" name="comment" value="Add a new comment"><br><br>
-                <input type="submit" value="Submit">
+        <section class="commentsection">
+            <h2 class="commentsection__title">Join the Conversation</h2>
+            <form class="commentsection__form"> 
+                <div class="commentsection__avatar-container">
+                    <img class="commentsection__avatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge Photo">
+                </div>
+                <label class="commentsection__name-label" for="name">Name</label><br>
+                <input class="commentsection__name-input"type="text" id="name" name="name" value="Enter your name"><br>
+                <label class="commentsection__comment-label" for="comment">Comment</label><br>
+                <input class="commentsection__comment-input" type="text" id="comment" name="comment" value="Add a new comment"><br><br>
+                <button type="submit" value="Submit">Submit</button>
             </form>
-
+            <ul class="commentsection__comments">
+            </ul>
         </section>
 
     </main>
@@ -182,6 +186,8 @@
             <p class="footer__copyright">Copyright The Bees Knees © 2021 All Rights Reserved</p>
         </div>
     </footer>
+
+    <script src="./scripts/index-page.js"></script>
 
 </body>
 

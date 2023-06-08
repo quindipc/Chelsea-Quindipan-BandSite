@@ -63,7 +63,7 @@ function createShowItem(show) {
     appendDividerLine();
 }
 
-// Create a function to add the shows subheader and shows info to the parent
+// Function to add the shows subheader and shows info to the parent
 function appendSubheader(parent, label, text) {
     let subheader = document.createElement("h3");
     subheader.classList.add("shows__subheader");
@@ -77,7 +77,7 @@ function appendSubheader(parent, label, text) {
     parent.appendChild(info);
 }
 
-// Create a function for the button to append to parent
+// Function for the button to append to parent
 function appendButton(parent, text) {
     let button = document.createElement("button");
     button.classList.add("shows__button");
