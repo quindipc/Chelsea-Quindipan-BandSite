@@ -300,6 +300,12 @@ body {
 .shows__list-item {
   padding: 1rem;
 }
+.shows__list-item::-moz-selection {
+  background-color: red;
+}
+.shows__list-item::selection {
+  background-color: red;
+}
 .shows__subheader {
   font-size: 13px;
   line-height: 18px;
@@ -308,12 +314,13 @@ body {
   text-transform: uppercase;
 }
 .shows__button {
-  height: 2.5rem;
   background-color: #323232;
   color: white;
-  padding: 2rem;
-  max-width: 9.375rem;
   text-align: center;
+  height: 2.5rem;
+  width: 9.375rem;
+  padding: 0 2rem;
+  margin: 1rem 0;
 }
 .shows__divider {
   border: none;

@@ -113,12 +113,14 @@
                 <div class="commentsection__avatar-container">
                     <img class="commentsection__avatar" src="./assets/images/Mohan-muruge.jpg" alt="Mohan Muruge Photo">
                 </div>
-                <label class="commentsection__name-label" for="name">Name</label><br>
-                <input class="commentsection__name-input" type="text" id="name" name="name" value="Enter your name"><br>
-                <label class="commentsection__comment-label" for="comment">Comment</label><br>
-                <input class="commentsection__comment-input" type="text" id="comment" name="comment"
-                    value="Add a new comment"><br><br>
-                <button type="submit" value="Submit">Submit</button>
+                <div class="commentsection__input-container">
+                    <label class="commentsection__label" for="name">Name</label>
+                    <input class="commentsection__input" type="text" id="name" name="name" placeholder="Enter your name">
+                    <label class="commentsection__label" for="comment">Comment</label>
+                    <!-- <input class="commentsection__input commentsection__input-comment" type="text" id="comment" name="comment" placeholder="Add a new comment"> -->
+                    <textarea class="commentsection__textarea" name="comment" id="comment" cols="20" rows="7" placeholder="Add a new comment"></textarea>
+                    <button class="commentsection__button" type="submit" value="submit">Comment</button>
+                </div>
             </form>
             <!-- Add JS and DOM Manipulation Here -->
             <ul class="commentsection__comments">

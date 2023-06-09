@@ -53,6 +53,10 @@
         padding: 1rem;
     }
 
+    &__list-item::selection{
+        background-color: red;
+    }        
+
     &__subheader {
         @include mobile__body-copy;
         color: $primary-silver;
@@ -60,12 +64,11 @@
     }
 
     &__button {
-        height: 2.5rem;
         background-color: $primary-black;
         color: white;
-        padding: 2rem;
-        max-width: 9.375rem;
         text-align: center;
+        @include cta;
+
     }
 
     &__divider {

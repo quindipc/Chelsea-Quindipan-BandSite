@@ -11,65 +11,147 @@ let comments = [{
     {
         name: "Miles Acosta",
         date: "12/20/2020",
-        comment: "I can 't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
+        comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
     },
-]
-
-
-/////// Form Container & Event Listener
+];
 
 // Grab the form as the Parent container
 let form = document.querySelector(".commentsection__form");
 
 // Add submit event listener so user can create new comment
 form.addEventListener("submit", (e) => {
-    // Remove refresh by default
     e.preventDefault();
-    // Collect values from the form such as name, comment
     const form = e.target;
     const name = form.name.value;
-    const comment = form.name.value;
+    const comment = form.comment.value;
 
-    //  Add validation for the form when user does not type in correctly
     if (!name || !comment) {
-        document.getElementById("name").style.border = "1px solid red";
-        document.getElementById("comment").style.border = "1px solid red";
+        document.getElementById("name").classList.add("commentsection__error");
+        document.getElementById("comment").classList.add("commentsection__error");
         return;
     }
 
-    // Create a function to append new comments
-    // Grab parent element container
+    removeError();
+
     const commentSection = document.querySelector(".commentsection__comments");
 
-    // Create new element for the container
+    // New comment list
     const newComment = document.createElement("li");
+    newComment.classList.add("commentsection__list-item");
 
-    // Add classes to element
+    // Avatar Container
+    const avatarContainer = document.createElement("div");
+    avatarContainer.classList.add("commentsection__avatar-container");
+    newComment.appendChild(avatarContainer);
 
+    // Avatar
+    const avatar = document.createElement("img");
+    avatar.classList.add("commentsection__avatar");
+    avatarContainer.appendChild(avatar);
 
-    // Append the child to parent
+    // Comment Content Container
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("commentsection__content-container");
+    newComment.appendChild(contentContainer);
+
+    // Name
+    const nameElement = document.createElement("p");
+    nameElement.classList.add("commentsection__name");
+    nameElement.textContent = name;
+    contentContainer.appendChild(nameElement);
+
+    // Date 
+    const dateElement = document.createElement("p");
+    dateElement.classList.add("commentsection__date");
+    dateElement.textContent = getCurrentDate();
+    contentContainer.appendChild(dateElement);
+
+    // Comment
+    const commentElement = document.createElement("p");
+    commentElement.classList.add("commentsection__comment");
+    commentElement.textContent = comment;
+    contentContainer.appendChild(commentElement);
+
+    // Divider Line
+    const dividerLine = document.createElement("hr");
+    dividerLine.classList.add("commentsection__divider");
+    contentContainert.appendChild(dividerLine);
+
     commentSection.appendChild(newComment);
-})
 
+    form.reset();
+});
 
-// ////// Original Comments
-// Grab parent container
+// Get the current date in the format of MM/DD/YYYY
+function getCurrentDate() {
+    const currentDate = new Date();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    return `${month}/${day}/${year}`;
+}
+
+// Function to remove error styles
+function removeError() {
+    document.getElementById("name").classList.remove("commentsection__error");
+    document.getElementById("comment").classList.remove("commentsection__error");
+}
+
+// Grab comment section for the parent container
 const commentSection = document.querySelector(".commentsection__comments");
 
 // Loop over the comments 
 for (let comment of comments) {
     createCommentItem(comment, commentSection);
 }
-  
-// Create a comment item
+
+// Create a new comment item
 function createCommentItem(comment, commentSection) {
-    let commentItemList = document.createElement("li");
+    const commentItemList = document.createElement("li");
     commentItemList.classList.add("commentsection__list-item");
 
-    // Append the name, date an comment
-    appendComment(commentItemList, "name", comment.name);
-    appendComment(commentItemList, "date", comment.date);
-    appendComment(commentItemList, "comment", comment.comment);
+    // Divider
+    const dividerLineTop = document.createElement("hr");
+    dividerLineTop.classList.add("commentsection__divider");
+    commentItemList.appendChild(dividerLineTop);
+
+    // Avatar Container
+    const avatarContainer = document.createElement("div");
+    avatarContainer.classList.add("commentsection__avatar-container");
+    commentItemList.appendChild(avatarContainer);
+
+    // Avatar 
+    const avatar = document.createElement("img");
+    avatar.classList.add("commentsection__avatar");
+    avatarContainer.appendChild(avatar);
+
+    // Comment Content Container
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("commentsection__content-container");
+    commentItemList.appendChild(contentContainer);
+
+    // Name
+    const nameElement = document.createElement("p");
+    nameElement.classList.add("commentsection__name");
+    nameElement.textContent = comment.name;
+    contentContainer.appendChild(nameElement);
+
+    // Date
+    const dateElement = document.createElement("p");
+    dateElement.classList.add("commentsection__date");
+    dateElement.textContent = comment.date;
+    contentContainer.appendChild(dateElement);
+
+    // Comment
+    const commentElement = document.createElement("p");
+    commentElement.classList.add("commentsection__comment");
+    commentElement.textContent = comment.comment;
+    contentContainer.appendChild(commentElement);
+
+    // // Divider -- needs on at bottom
+    // const dividerLine = document.createElement("hr");
+    // dividerLine.classList.add("commentsection__divider");
+    // commentItemList.appendChild(dividerLine);
 
     commentSection.appendChild(commentItemList);
 }
