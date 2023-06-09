@@ -58,24 +58,24 @@ form.addEventListener("submit", (e) => {
     const nameElement = document.createElement("p");
     nameElement.classList.add("commentsection__name");
     nameElement.textContent = name;
-    contentContainer.appendChild(nameElement);
+    newComment.appendChild(nameElement);
 
     // Date 
     const dateElement = document.createElement("p");
     dateElement.classList.add("commentsection__date");
     dateElement.textContent = getCurrentDate();
-    contentContainer.appendChild(dateElement);
+    newComment.appendChild(dateElement);
 
     // Comment
     const commentElement = document.createElement("p");
     commentElement.classList.add("commentsection__comment");
     commentElement.textContent = comment;
-    contentContainer.appendChild(commentElement);
+    newComment.appendChild(commentElement);
 
     // Divider Line
     const dividerLine = document.createElement("hr");
     dividerLine.classList.add("commentsection__divider");
-    contentContainert.appendChild(dividerLine);
+    newComment.appendChild(dividerLine);
 
     commentSection.appendChild(newComment);
 
@@ -109,6 +109,9 @@ for (let comment of comments) {
 function createCommentItem(comment, commentSection) {
     const commentItemList = document.createElement("li");
     commentItemList.classList.add("commentsection__list-item");
+
+    // Append the divider, avatar, name, date, comment
+    
 
     // Divider
     const dividerLineTop = document.createElement("hr");

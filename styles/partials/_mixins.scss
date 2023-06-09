@@ -90,10 +90,16 @@
 
 
 // Button styles
-
 @mixin cta {
     height: 2.5rem;
     width: 9.375rem;
     padding: 0 2rem;
     margin: 1rem 0;
+    border-radius: .25rem;
+}
+
+// Divider styles 
+@mixin divider {
+    stroke-width: 1px;
+    color: $secondary-mercury
 }

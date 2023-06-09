@@ -227,9 +227,21 @@
     }
 
     &__textarea {
+       font-family: inherit;
         border-radius: .25rem;
         border: 1px solid $secondary-mercury;
         background-color: $secondary-alabaster;
+    }
+    
+    &__button {
+        text-transform: uppercase;
+        background-color: $primary-black;
+        color: $primary-white;
+        @include cta;
+        width: 100%;
+    }
+
+    &__list-item{
     }
 
     // ::placeholder {
@@ -237,7 +249,8 @@
     // }
 
     &__content-container {
-
+        display: flex;
+        flex-direction: column;
     }
 
     &__comments {
@@ -248,10 +261,10 @@
         border: 1px solid $error;
     }
 
-    &__button {
-        text-transform: uppercase;
-        background-color: $primary-black;
-        color: $primary-white;
-        @include cta;
+    &__name, &__date, &__comment {
+        padding: .5rem 0;
     }
+
+
+
 }
