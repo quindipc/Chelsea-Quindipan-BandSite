@@ -156,17 +156,27 @@
 
 .commentsection {
     display: flex;
+    justify-content: center;
+    position: relative;
     padding: 1rem;
     flex-direction: column;
 
+    @include tablet {
+        padding: 2.25rem;
+    }
 
     &__form {
         display: flex;
         padding-top: 1rem;
+        max-width: 100%;
     }
 
     &__title {
         @include mobile__section-header;
+
+        @include tablet {
+            @include desktop__section-header;
+        }
     }
 
     &__avatar-container {
@@ -198,11 +208,14 @@
         color: $secondary-mercury;
         text-transform: uppercase;
         @include mobile__body-copy;
-        padding: .25rem 0;
+        padding: 1rem 0 .25rem;
+
+        @include tablet {
+            @include desktop__body-copy;
+        }
     }
 
     &__input {
-        width: 100%;
         height: 2.25rem;
         border-radius: .25rem;
         padding: .75rem;
@@ -211,6 +224,7 @@
         @include mobile__body-copy;
 
         @include tablet {
+            @include desktop__body-copy;
             height: 3rem;
             padding: 1rem;
         }
@@ -227,30 +241,26 @@
     }
 
     &__textarea {
-       font-family: inherit;
+        font-family: inherit;
         border-radius: .25rem;
         border: 1px solid $secondary-mercury;
         background-color: $secondary-alabaster;
     }
-    
+
     &__button {
         text-transform: uppercase;
+        @include mobile__labels-buttons;
         background-color: $primary-black;
         color: $primary-white;
         @include cta;
         width: 100%;
     }
 
-    &__list-item{
-    }
-
-    // ::placeholder {
-    //     @include mobile__body-copy;
-    // }
 
     &__content-container {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
     }
 
     &__comments {
@@ -261,10 +271,15 @@
         border: 1px solid $error;
     }
 
-    &__name, &__date, &__comment {
-        padding: .5rem 0;
+    &__date {
+        display: flex;
+        @include mobile__body-copy;
+        color: $secondary-mercury;
+        position: relative;
+        margin-left: auto;
     }
 
-
-
+    &__comment {
+        padding: 1rem 3.5rem;
+    }
 }
