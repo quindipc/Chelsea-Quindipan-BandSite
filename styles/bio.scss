@@ -163,6 +163,9 @@
 
     @include tablet {
         padding: 2.25rem;
+        max-width: 768px;
+        justify-content: center;
+        margin: auto;
     }
 
     &__form {
@@ -230,6 +233,10 @@
         }
     }
 
+    &__list-item {
+        list-style-type: none;
+    }
+
     &__input:focus {
         color: $primary-black;
     }
@@ -254,6 +261,12 @@
         color: $primary-white;
         @include cta;
         width: 100%;
+
+        @include tablet {
+            @include desktop__labels-buttons;
+            width: 9.375rem;
+            margin-left: auto;
+        }
     }
 
 
@@ -263,9 +276,9 @@
         align-items: center;
     }
 
-    &__comments {
-        list-style-type: none;
-    }
+    // &__comments {
+    //     list-style-type: none;
+    // }
 
     &__error {
         border: 1px solid $error;
