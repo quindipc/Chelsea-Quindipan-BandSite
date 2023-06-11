@@ -1,7 +1,7 @@
 //  Shows info
-let showsHeader = "Shows";
+const showsHeader = "Shows";
 
-let shows = [{
+const shows = [{
         date: "Mon Sept 06 2021",
         venue: "Ronald Lane",
         location: "San Francisco, CA"
@@ -34,42 +34,112 @@ let shows = [{
 ]
 
 // Parent Container for shows
-let showsContainer = document.querySelector(".shows__list");
+const showsContainer = document.querySelector(".shows__list");
 
-// Create a header for the shows container
-let headerTitle = document.createElement("h2");
+// Header for the shows container
+const headerTitle = document.createElement("h2");
 headerTitle.classList.add("shows__title");
 headerTitle.textContent = showsHeader;
 showsContainer.appendChild(headerTitle);
 
+// List Container
+const showsListContainer = document.createElement("div");
+showsListContainer.classList.add("shows__list-container");
+showsContainer.appendChild(showsListContainer);
+
+// Div to hold the tablet header
+const tabletHeader = document.createElement("div");
+tabletHeader.classList.add("shows__list-header");
+
+// Create separate elements for Date, Venue, and Location
+const dateSubheader = document.createElement("h3");
+dateSubheader.classList.add("shows__subheader--tablet");
+dateSubheader.textContent = "Date";
+
+const venueSubheader = document.createElement("h3");
+venueSubheader.classList.add("shows__subheader--tablet");
+venueSubheader.textContent = "Venue";
+
+const locationSubheader = document.createElement("h3");
+locationSubheader.classList.add("shows__subheader--tablet");
+locationSubheader.textContent = "Location";
+
+const spaceSubheader = document.createElement("h3");
+spaceSubheader.classList.add("shows__subheader--tablet");
+spaceSubheader.textContent = "";
+
+// Append the Date, Venue, and Location elements to the tablet header
+tabletHeader.appendChild(dateSubheader);
+tabletHeader.appendChild(venueSubheader);
+tabletHeader.appendChild(locationSubheader);
+tabletHeader.appendChild(spaceSubheader);
+
+// Append the tablet header to the shows container
+showsListContainer.appendChild(tabletHeader);
+
 // Loop to iterate over the shows array
-for (let show of shows) {
+for (let i = 0; i < shows.length; i++) {
+    const show = shows[i];
     createShowItem(show);
+
+    if (i !== shows.length - 1) {
+        appendDividerLine(showsListContainer);
+    }
 }
+
 
 // Creates a show item
 function createShowItem(show) {
-    let showsItemList = document.createElement("div");
+    const showsItemList = document.createElement("div");
     showsItemList.classList.add("shows__list-item");
+
+    // Add click event to toggle background color
+    showsItemList.addEventListener("click", () => {
+        toggleBackgroundColor(showsItemList);
+    });
 
     // Appends the date, venue, location, and button
     appendSubheader(showsItemList, "Date", show.date);
     appendSubheader(showsItemList, "Venue", show.venue);
     appendSubheader(showsItemList, "Location", show.location);
-    appendButton(showsItemList, "Buy Tickets");
+
+    // Button Container
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("shows__button-container");
+
+    // Button element
+    const buyTicketsButton = document.createElement("button");
+    buyTicketsButton.classList.add("shows__button");
+    buyTicketsButton.textContent = "Buy Tickets";
+
+    // Append the button to the button container
+    buttonContainer.appendChild(buyTicketsButton);
+
+    // Append the button container to the show item
+    showsItemList.appendChild(buttonContainer);
+
 
     // Append to the shows container
-    showsContainer.appendChild(showsItemList);
-    appendDividerLine();
+    showsListContainer.appendChild(showsItemList);
+}
+
+// Function to toggle background color
+function toggleBackgroundColor(element) {
+    const backgroundColor = element.style.backgroundColor;
+    if (backgroundColor && backgroundColor === "rgb(225, 225, 225)") {
+        element.style.backgroundColor = "";
+    } else {
+        element.style.backgroundColor = "#e1e1e1";
+    }
 }
 
 // Function to add the shows subheader and shows info to the parent
 function appendSubheader(parent, label, text) {
-    let subheader = document.createElement("h3");
+    const subheader = document.createElement("h3");
     subheader.classList.add("shows__subheader");
     subheader.textContent = label;
 
-    let info = document.createElement("p");
+    const info = document.createElement("p");
     info.classList.add("shows__info");
     info.textContent = text;
 
@@ -77,17 +147,17 @@ function appendSubheader(parent, label, text) {
     parent.appendChild(info);
 }
 
-// Function for the button to append to parent
-function appendButton(parent, text) {
-    let button = document.createElement("button");
-    button.classList.add("shows__button");
-    button.textContent = text;
-    parent.appendChild(button);
-}
+// // Function for the button to append to parent
+// function appendButton(parent, text) {
+//     const button = document.createElement("button");
+//     button.classList.add("shows__button");
+//     button.textContent = text;
+//     parent.appendChild(button);
+// }
 
-// Create a function to append a divider line in the shows container
-function appendDividerLine() {
-    let dividerLine = document.createElement("hr");
+// Function to append a divider line in the shows container
+function appendDividerLine(parent) {
+    const dividerLine = document.createElement("hr");
     dividerLine.classList.add("shows__divider");
-    showsContainer.appendChild(dividerLine);
+    parent.appendChild(dividerLine);
 }

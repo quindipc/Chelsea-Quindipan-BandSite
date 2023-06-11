@@ -5,6 +5,12 @@
 // HERO STYLES
 .hero {
 
+    &__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
     &__album {
         @include mobile__subheader;
         position: absolute;
@@ -21,54 +27,136 @@
     }
 
     &__overlay {
-        display:flex; 
-        justify-content: center;
-        align-items: center;
         position: absolute;
-        width: 30rem;
-        height: 10rem;
+        width: 20rem;
         z-index: 4;
+        left: 50%;
+        top: 60%;
+        transform: translateX(-50%);
+        margin-left: auto;
     }
 
     &__music {
-            width: 100%;
-            height: 100%;
-            border: none;
+        width: 100%;
+        height: 100%;
     }
-
 }
 
-
-
 .shows {
-    // padding: 1.5rem 1rem;
+    padding: 1.5rem 1rem;
 
+    @include tablet {
+        padding: 3rem 2.25rem;
+    }
+
+    &__list {
+        @include desktop {
+            display: flex;
+        }
+    }
 
     &__title {
         padding: 1rem;
         @include mobile__section-header;
+
+        @include desktop {
+            @include desktop__section-header;
+            display: flex;
+            flex: 1;
+        }
+    }
+
+    &__subheader--tablet {
+        display: none;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            @include desktop__body-copy;
+            color: $primary-silver;
+            text-transform: uppercase;
+            flex: 0 1 25%;
+        }
+    }
+
+    &__list-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+    &__list-container {
+
+        @include desktop {
+            flex: 3;
+        }
     }
 
     &__list-item {
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
-    &__list-item::selection{
-        background-color: red;
-    }        
+    &__info {
+        flex: 0 1 25%;
+    }
+
+    &__info:nth-child(2) {
+        font-weight: bold;
+    }
+
+    &__list-item:hover {
+        background-color: $secondary-alabaster;
+        cursor: pointer;
+    }
 
     &__subheader {
         @include mobile__body-copy;
         color: $primary-silver;
         text-transform: uppercase;
+        padding: 1rem 0;
+
+        @include tablet {
+            display: none;
+            text-align: center;
+        }
+    }
+
+    &__button-container {
+        display: flex;
+        flex: 0 1 25%;
     }
 
     &__button {
         background-color: $primary-black;
         color: white;
         text-align: center;
-        @include cta;
+        text-transform: uppercase;
+        @include mobile__labels-buttons;
+        width: 100%;
+        height: 2.5rem;
+        padding: 0 2rem;
+        margin: 1rem 0;
+        border-radius: .25rem;
 
+        @include tablet {
+            @include cta;
+            @include desktop__labels-buttons;
+        }
+    }
+
+    &__button:hover {
+        background-color: $secondary-black;
+        cursor: pointer;
     }
 
     &__divider {
@@ -77,5 +165,4 @@
         margin: .625rem 0;
         width: 100%;
     }
-
 }
