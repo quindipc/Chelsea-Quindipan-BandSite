@@ -13,7 +13,6 @@
         position: relative;
     }
 
-
     &__container-content {
         display: flex;
         flex-direction: column;
@@ -36,6 +35,7 @@
             top: 50%;
         }
     }
+
     &__container-header {
         display: flex;
         flex-direction: column;

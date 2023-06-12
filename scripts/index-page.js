@@ -32,8 +32,6 @@ form.addEventListener("submit", (e) => {
         return;
     }
 
-
-
     removeError();
 
     const commentSection = document.querySelector(".commentsection__comments");
@@ -103,7 +101,7 @@ function getCurrentDate() {
     // Timestamps ago
     if (hours < 60) {
         return `${day}/${month}/${year} - Posted ${seconds} seconds ago`;
-      } else if (minutes < 60){
+    } else if (minutes < 60){
         return `${day}/${month}/${year} - Posted ${minutes} minutes ago`;
     } else {
         return `${day}/${month}/${year} - Posted ${hours} hours ago`;
@@ -135,18 +133,13 @@ function displayComment(comment, commentSection) {
     contentContainer.classList.add("commentsection__content-container");
     commentItemList.appendChild(contentContainer);
 
-    // Divider Line
-    const dividerLine = document.createElement("hr");
-    dividerLine.classList.add("commentsection__divider");
-    contentContainer.appendChild(dividerLine);
-
     // Avatar Container
     const avatarContainer = document.createElement("div");
     avatarContainer.classList.add("commentsection__avatar-container");
     contentContainer.appendChild(avatarContainer);
 
     // Avatar 
-    const avatar = document.createElement("img");
+    const avatar = document.createElement("div");
     avatar.classList.add("commentsection__avatar");
     avatarContainer.appendChild(avatar);
 

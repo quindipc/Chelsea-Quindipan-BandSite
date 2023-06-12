@@ -1,4 +1,4 @@
-@use "./variables" as *;
+@use "./variables"as *;
 @use "./mixins"as *;
 
 
@@ -16,7 +16,7 @@ body {
 // Header Styles
 .header {
     background: $primary-black;
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,9 +36,10 @@ body {
     }
 
     &__nav {
+        width: 100%;
+
         @include mobile__body-copy;
 
-        // Tablet and Desktop 
         @include tablet {
             @include desktop__body-copy;
             display: flex;
@@ -65,14 +66,16 @@ body {
 
 
     &__navlist-item {
+        flex: 0 1 50%;
+        justify-content: center;
         position: relative;
-        margin-right: 3rem;
-        margin-left: 3rem;
         top: 1rem;
         padding-bottom: .5rem;
 
         @include tablet {
             padding-bottom: 1.5rem;
+            margin-right: 3rem;
+            margin-left: 3rem;
         }
     }
 
@@ -98,6 +101,7 @@ body {
         font-weight: 700;
     }
 
+
     &__navlist-item.unactive {
         border-bottom: .25rem solid transparent;
         color: $secondary-mercury;
@@ -109,38 +113,18 @@ body {
 .hero {
     display: flex;
     overflow: hidden;
-    
 
     &__container {
         position: relative;
-        text-align: center;
         width: 100%;
     }
 
-    &__title {
-        @include mobile__page-header;
-        position: absolute;
-        z-index: 3;
-        color: $primary-white;
-        top: 50%;
-        margin-left: 1rem;
-        transform: translateY(-50%);
-        text-align: left;
-        
-        @include tablet {
-            @include desktop__page-header;
-            padding: 2.25rem;
-        }
-        
-    }
-    
     &__image {
         position: relative;
         width: 100%;
         z-index: 1;
     }
 
-    
     &__container-image::before {
         content: "";
         position: absolute;

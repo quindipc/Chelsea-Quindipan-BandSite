@@ -147,14 +147,6 @@ function appendSubheader(parent, label, text) {
     parent.appendChild(info);
 }
 
-// // Function for the button to append to parent
-// function appendButton(parent, text) {
-//     const button = document.createElement("button");
-//     button.classList.add("shows__button");
-//     button.textContent = text;
-//     parent.appendChild(button);
-// }
-
 // Function to append a divider line in the shows container
 function appendDividerLine(parent) {
     const dividerLine = document.createElement("hr");

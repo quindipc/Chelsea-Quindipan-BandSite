@@ -2,6 +2,26 @@
 @use "./partials/variables"as *;
 @use "./partials/mixins"as *;
 
+
+.hero {
+    &__title {
+        @include mobile__page-header;
+        position: absolute;
+        z-index: 3;
+        color: $primary-white;
+        top: 50%;
+        margin-left: 1rem;
+        transform: translateY(-50%);
+        text-align: left;
+        
+        @include tablet {
+            @include desktop__page-header;
+            padding: 2.25rem;
+        }
+        
+    }
+}
+
 // About Styles
 .about {
     padding: 1.5rem 1rem;
@@ -99,7 +119,7 @@
     }
 }
 
-
+// Gallery Styles
 
 .gallery {
 
@@ -183,7 +203,6 @@
     }
 
     &__avatar-container {
-        display: flex;
         padding-right: 1rem;
     }
 
@@ -195,7 +214,7 @@
         width: 2.25rem;
         height: 2.25rem;
         margin: 1.5rem 0;
-        object-fit: cover;
+        object-fit:cover;
         background-color: $secondary-mercury;
 
         @include tablet {
@@ -203,7 +222,6 @@
             max-height: 3rem;
             width: 3rem;
             height: 3rem;
-            object-fit: cover;
         }
     }
 
@@ -269,16 +287,18 @@
         }
     }
 
+    &__button:hover {
+        background-color: $secondary-black;
+        cursor: pointer;
+    }
+
 
     &__content-container {
         display: flex;
         flex-direction: row;
         align-items: center;
+       
     }
-
-    // &__comments {
-    //     list-style-type: none;
-    // }
 
     &__error {
         border: 1px solid $error;
@@ -293,6 +313,6 @@
     }
 
     &__comment {
-        padding: 1rem 3.5rem;
+        padding: 1rem 2.25rem;
     }
 }

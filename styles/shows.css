@@ -28,7 +28,7 @@ body {
 
 .header {
   background: #323232;
-  padding: 1rem;
+  padding: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@ body {
   .header {
     font-size: 14px;
     line-height: 22px;
-    font-weight: normal 400;
+    font-weight: 400;
     padding: 1rem 2.25rem;
     display: flex;
     justify-content: space-between;
@@ -52,15 +52,16 @@ body {
   }
 }
 .header__nav {
+  width: 100%;
   font-size: 13px;
   line-height: 18px;
-  font-weight: normal 400;
+  font-weight: 400;
 }
 @media screen and (min-width: 768px) {
   .header__nav {
     font-size: 14px;
     line-height: 22px;
-    font-weight: normal 400;
+    font-weight: 400;
     display: flex;
     align-items: center;
   }
@@ -79,17 +80,17 @@ body {
   align-items: flex-end;
 }
 .header__navlist-item {
-  display: flex;
   flex: 0 1 50%;
+  justify-content: center;
   position: relative;
-  margin-right: 3rem;
-  margin-left: 3rem;
   top: 1rem;
   padding-bottom: 0.5rem;
 }
 @media screen and (min-width: 768px) {
   .header__navlist-item {
     padding-bottom: 1.5rem;
+    margin-right: 3rem;
+    margin-left: 3rem;
   }
 }
 .header__navlist--hover {
@@ -110,7 +111,6 @@ body {
 }
 .header__navlist-item.active {
   border-bottom: 0.25rem solid white;
-  width: 100%;
   font-weight: 700;
 }
 .header__navlist-item.unactive {
@@ -156,7 +156,7 @@ body {
   padding: 1rem;
   font-size: 13px;
   line-height: 18px;
-  font-weight: normal 400;
+  font-weight: 400;
 }
 @media screen and (min-width: 768px) {
   .footer {
@@ -197,7 +197,7 @@ body {
   padding-top: 3rem;
   font-size: 13px;
   line-height: 18px;
-  font-weight: normal 400;
+  font-weight: 400;
 }
 .footer__title {
   font-size: 24px;
@@ -278,14 +278,14 @@ body {
 .hero__album {
   font-size: 14px;
   line-height: 22px;
-  font-weight: demi 600;
+  font-weight: 600;
   color: #FFFFFF;
 }
 @media screen and (min-width: 768px) {
   .hero__album {
     font-size: 24px;
     line-height: 32px;
-    font-weight: demi 600;
+    font-weight: 600;
   }
 }
 .hero__title {
@@ -353,7 +353,7 @@ body {
     flex-direction: row;
     font-size: 14px;
     line-height: 22px;
-    font-weight: normal 400;
+    font-weight: 400;
     color: #AFAFAF;
     text-transform: uppercase;
     flex: 0 1 25%;
@@ -396,7 +396,7 @@ body {
 .shows__subheader {
   font-size: 13px;
   line-height: 18px;
-  font-weight: normal 400;
+  font-weight: 400;
   color: #AFAFAF;
   text-transform: uppercase;
   padding: 1rem 0;
