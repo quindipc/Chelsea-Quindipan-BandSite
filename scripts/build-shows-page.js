@@ -1,3 +1,28 @@
+// API
+const BASE_URL = "https://project-1-api.herokuapp.com";
+const API_KEY = "ac63cb3f-a872-4258-a166-574d2ca85da4";
+
+// Get /showdates
+function fetchShows() {
+    axios
+        .get(`${BASE_URL}/showdates?api_key=${API_KEY}`)
+        .then(
+            (response) => {
+                console.log(response);
+            }
+        )
+        .catch(
+            (error) => {
+                console.error(error);
+            }
+    );
+
+    
+    
+}
+fetchShows();
+
+
 //  Shows info
 const showsHeader = "Shows";
 
@@ -66,7 +91,7 @@ locationSubheader.textContent = "Location";
 
 const spaceSubheader = document.createElement("h3");
 spaceSubheader.classList.add("shows__subheader--tablet");
-spaceSubheader.textContent = "";
+spaceSubheader.textContent = "EMPTY";
 
 // Append the Date, Venue, and Location elements to the tablet header
 tabletHeader.appendChild(dateSubheader);

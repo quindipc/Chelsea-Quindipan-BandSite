@@ -280,6 +280,7 @@
         @include cta;
         width: 100%;
 
+
         @include tablet {
             @include desktop__labels-buttons;
             width: 9.375rem;
