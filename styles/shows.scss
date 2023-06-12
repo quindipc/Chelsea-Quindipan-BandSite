@@ -9,44 +9,77 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        align-items: flex-start;
+        position: relative;
+    }
+
+
+    &__container-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-evenly;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        padding: 1rem;
+        
+        @include tablet {
+            padding: 2.25rem;
+        }
+
+        @include desktop {
+            flex-direction: row;
+            top: 50%;
+        }
+    }
+    &__container-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     &__album {
         @include mobile__subheader;
-        position: absolute;
-        z-index: 3;
         color: $primary-white;
-        top: 33.33%;
-        margin-left: 1rem;
-        transform: translateY(-50%);
 
         @include tablet {
             @include desktop__subheader;
-            padding: 2.25rem;
         }
     }
 
-    &__overlay {
-        position: absolute;
-        width: 20rem;
-        z-index: 4;
-        left: 50%;
-        top: 60%;
-        transform: translateX(-50%);
-        margin-left: auto;
+    &__title {
+        @include mobile__page-header;
+        color: $primary-white;
+
+        @include tablet {
+            @include desktop__page-header;
+        }
+
     }
 
+
     &__music {
-        width: 100%;
-        height: 100%;
+        height: 7rem; 
+
+        @include tablet {
+            width: 40rem;
+            height: 10rem;
+        }
+        @include desktop {
+            width: 30rem;
+        }
     }
 }
 
 .shows {
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
 
     @include tablet {
-        padding: 3rem 2.25rem;
+        padding: 1.5rem 1.125rem;
     }
 
     &__list {
