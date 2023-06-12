@@ -1,12 +1,14 @@
+@use "../partials/variables"as *;
+
 // Media Query
 @mixin desktop {
-    @media screen and (min-width: 1280px){
+    @media screen and (min-width: $desktop) {
         @content;
     }
 }
 
 @mixin tablet {
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: $tablet) {
         @content;
     }
 }
@@ -14,66 +16,92 @@
 
 // Fonts
 // Mobile Text Styles
-@mixin mobile__page-header{
+@mixin mobile__page-header {
     font-size: 24px;
     line-height: 32px;
-    font-weight: 700;
+    font-weight: bold 700;
 }
-@mixin mobile__section-header{
+
+@mixin mobile__section-header {
     font-size: 24px;
     line-height: 32px;
-    font-weight: 700;
+    font-weight: bold 700;
 }
-@mixin mobile__subheader{
+
+@mixin mobile__subheader {
     font-size: 14px;
     line-height: 22px;
     font-weight: 600;
 }
-@mixin mobile__body-copy{
+
+@mixin mobile__body-copy {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight:400;
+}
+
+@mixin mobile__footer-copy {
     font-size: 13px;
     line-height: 18px;
     font-weight: 400;
 }
-@mixin mobile__footer-copy{
-    font-size: 13px;
-    line-height: 18px;
-    font-weight: 400;
-}
-@mixin mobile__labels-buttons{
+
+@mixin mobile__labels-buttons {
     font-size: 10px;
     line-height: 20px;
-    font-weight: 700;
+    font-weight: bold 700;
 }
 
 
 // Desktop & Tablet Text Styles
-@mixin desktop__page-header{
+@mixin desktop__page-header {
     font-size: 60px;
     line-height: 68px;
-    font-weight: 700;
+    font-weight: bold 700;
 }
-@mixin desktop__section-header{
+
+@mixin desktop__section-header {
     font-size: 36px;
     line-height: 44px;
-    font-weight: 700;
+    font-weight: bold 700;
 }
-@mixin desktop__subheader{
+
+@mixin desktop__subheader {
     font-size: 24px;
     line-height: 32px;
-    font-weight: 700;
+    font-weight: 600;
 }
-@mixin desktop__body-copy{
+
+@mixin desktop__body-copy {
     font-size: 14px;
     line-height: 22px;
     font-weight: 400;
 }
-@mixin desktop__footer-copy{
+
+@mixin desktop__footer-copy {
     font-size: 14px;
     line-height: 20px;
     font-weight: 400;
 }
-@mixin desktop__labels-buttons{
+
+@mixin desktop__labels-buttons {
     font-size: 12px;
     line-height: 20px;
-    font-weight: 700;
+    font-weight: bold 700;
+}
+
+
+// Button styles
+@mixin cta {
+    height: 2.5rem;
+    width: 9.375rem;
+    padding: 0 2rem;
+    margin: 1rem 0;
+    border-radius: .25rem;
+}
+
+// Divider styles 
+@mixin divider {
+    stroke-width: 1px;
+    color: $secondary-mercury
 }

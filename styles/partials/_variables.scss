@@ -7,19 +7,21 @@ $secondary-black: #000000; //BandSite-DarkBlack
 $secondary-mercury: #E1E1E1; //Mercury
 $secondary-alabaster: #FAFAFA; //Alabaster
 
+$error: #D22D2D;
+
 
 // Fonts
 @font-face {
     font-family: "AvenirNextLTPro";
     src: url("/assets/fonts/AvenirNextLTPro-Bold.otf"), url("/assets/fonts/Alternative/AvenirNextLTProBold.ttf");
-    font-style: normal;
+    font-style: Bold;
     font-weight: 700;
 }
 
 @font-face {
     font-family: "AvenirNextLTPro";
     src: url("/assets/fonts/AvenirNextLTPro-Demi.otf"), url("/assets/fonts/Alternative/AvenirNextLTProDemi.ttf");
-    font-style: normal;
+    font-style: Demi;
     font-weight: 600;
 }
 
@@ -29,3 +31,7 @@ $secondary-alabaster: #FAFAFA; //Alabaster
     font-style: normal;
     font-weight: 400;
 }
+
+// Media Query Sizes 
+$tablet: 768px;
+$desktop: 1280px;

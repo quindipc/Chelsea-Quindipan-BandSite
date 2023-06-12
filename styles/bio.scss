@@ -1,111 +1,9 @@
-@use "../styles/partials/resets";
-@use "../styles/partials/variables"as *;
-@use "../styles/partials/mixins"as *;
-
-// Header Styles
-.header {
-    background: $primary-black;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-
-    @include tablet {
-        @include desktop__body-copy;
-        padding: 1rem 2.25rem;
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    @include desktop {
-        padding: auto;
-    }
-
-    &__nav {
-        @include mobile__body-copy;
-
-        // Tablet and Desktop 
-        @include tablet {
-            @include desktop__body-copy;
-            display: flex;
-            align-items: center;
-        }
-
-    }
-
-    &__logo--container {
-        display: flex;
-        justify-content: center;
-    }
-
-    &__logo {
-        max-height: 1.25rem;
-        max-width: 7.5rem;
-    }
-
-    &__navlist {
-        display: flex;
-        list-style: none;
-        align-items: flex-end;
-    }
+@use "./partials/resets";
+@use "./partials/variables"as *;
+@use "./partials/mixins"as *;
 
 
-    &__navlist--item {
-        position: relative;
-        margin-right: 3rem;
-        margin-left: 3rem;
-        top: 1rem;
-        padding-bottom: .5rem;
-
-        @include tablet {
-            padding-bottom: 1.5rem;
-        }
-    }
-
-    &__navlist--hover {
-        color: $primary-white;
-        text-decoration: none;
-        list-style: none;
-    }
-
-    &__navlist--hover:hover {
-        color: $primary-white;
-        padding-bottom: .7rem;
-        border-bottom: .25rem solid white;
-        cursor: pointer;
-
-        @include tablet {
-            padding-bottom: 1.7rem;
-        }
-    }
-
-    &__navlist--item.active {
-        border-bottom: .25rem solid white;
-        font-weight: 700;
-    }
-
-    &__navlist--item.unactive {
-        border-bottom: .25rem solid transparent;
-        color: $secondary-mercury;
-    }
-
-
-}
-
-// Hero Styles
 .hero {
-    display: flex;
-    overflow: hidden;
-
-    &__container {
-        position: relative;
-        text-align: center;
-        width: 100%;
-    }
-
     &__title {
         @include mobile__page-header;
         position: absolute;
@@ -114,37 +12,15 @@
         top: 50%;
         margin-left: 1rem;
         transform: translateY(-50%);
-
+        text-align: left;
+        
         @include tablet {
             @include desktop__page-header;
             padding: 2.25rem;
         }
-
-    }
-
-    &__image {
-        position: relative;
-        width: 100%;
-        z-index: 1;
-    }
-
-    &__container--image::before {
-        content: "";
-        position: absolute;
-        background-color: rgba(50, 50, 50, 0.5);
-        width: 100%;
-        bottom: .33rem;
-        height: 100%;
-        z-index: 2;
-        overflow: hidden;
-
-        @include tablet {
-            height: 100%;
-            overflow: hidden;
-        }
+        
     }
 }
-
 
 // About Styles
 .about {
@@ -190,7 +66,7 @@
         }
     }
 
-    &__container--text {
+    &__container-text {
         @include tablet {
             display: flex;
             flex-direction: column;
@@ -208,7 +84,7 @@
         }
     }
 
-    &__quote--author {
+    &__quote-author {
         @include mobile__subheader;
     }
 
@@ -232,7 +108,7 @@
         }
     }
 
-    &__info--container {
+    &__info-container {
 
         @include tablet {
             display: flex;
@@ -243,7 +119,7 @@
     }
 }
 
-
+// Gallery Styles
 
 .gallery {
 
@@ -268,7 +144,7 @@
         }
     }
 
-    &__container--images {
+    &__container-images {
         @include tablet {
             display: flex;
             flex-wrap: wrap;
@@ -280,18 +156,17 @@
     &__image {
         padding: 1rem;
         width: 100%;
-        
+
         @include tablet {
             width: 33.33%;
         }
     }
-    
+
     @include desktop {
         &__image {
             filter: grayscale(1);
-            
         }
-        
+
         &__image:hover {
             filter: none;
             cursor: pointer;
@@ -299,103 +174,145 @@
     }
 }
 
-// Footer Styles 
-
-.footer {
+.commentsection {
     display: flex;
-    flex-direction: column;
-    color: $primary-white;
-    background-color: $primary-black;
+    justify-content: center;
+    position: relative;
     padding: 1rem;
-    @include mobile__footer-copy;
+    flex-direction: column;
 
     @include tablet {
-        padding: 2.25rem 3rem;
+        padding: 2.25rem;
+        max-width: 768px;
+        justify-content: center;
+        margin: auto;
     }
 
-    &__container {
-        margin-top: 1.5rem;
-    }
-
-    &__container--space {
-        @include tablet {
-            padding-left: 3rem;
-        }
-    }
-
-    &__container--one {
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top: 0;
-        }
-    }
-
-    &__container--icons {
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-        }
-
-    }
-
-    &__container--contact {
-
-        @include tablet {
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-    }
-
-    &__container--copyright {
-        padding-top: 3rem;
-        @include mobile__footer-copy;
+    &__form {
+        display: flex;
+        padding-top: 1rem;
+        max-width: 100%;
     }
 
     &__title {
-        @include mobile__page-header;
-    }
-
-    &__icon {
-        flex-direction: row;
-        padding-right: 2rem;
-        padding-top: 1rem;
+        @include mobile__section-header;
 
         @include tablet {
-            padding-left: 1rem;
+            @include desktop__section-header;
         }
     }
 
-    &__subheading--container {
-        margin-bottom: 1rem;
-
+    &__avatar-container {
+        padding-right: 1rem;
     }
 
-    &__info--container {
-        margin-bottom: 1rem;
+    &__avatar {
+        display: flex;
+        border-radius: 50%;
+        max-width: 2.25rem;
+        max-height: 2.25rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        margin: 1.5rem 0;
+        object-fit:cover;
+        background-color: $secondary-mercury;
+
+        @include tablet {
+            max-width: 3rem;
+            max-height: 3rem;
+            width: 3rem;
+            height: 3rem;
+        }
     }
 
-    &__mailto {
+    &__label {
+        color: $secondary-mercury;
+        text-transform: uppercase;
+        @include mobile__body-copy;
+        padding: 1rem 0 .25rem;
+
+        @include tablet {
+            @include desktop__body-copy;
+        }
+    }
+
+    &__input {
+        height: 2.25rem;
+        border-radius: .25rem;
+        padding: .75rem;
+        border: 1px solid $secondary-mercury;
+        background-color: $secondary-alabaster;
+        @include mobile__body-copy;
+
+        @include tablet {
+            @include desktop__body-copy;
+            height: 3rem;
+            padding: 1rem;
+        }
+    }
+
+    &__list-item {
+        list-style-type: none;
+    }
+
+    &__input:focus {
+        color: $primary-black;
+    }
+
+    &__input-container {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+    }
+
+    &__textarea {
+        font-family: inherit;
+        border-radius: .25rem;
+        border: 1px solid $secondary-mercury;
+        background-color: $secondary-alabaster;
+    }
+
+    &__button {
+        text-transform: uppercase;
+        @include mobile__labels-buttons;
+        background-color: $primary-black;
         color: $primary-white;
-        text-decoration: none;
+        @include cta;
+        width: 100%;
+
+        @include tablet {
+            @include desktop__labels-buttons;
+            width: 9.375rem;
+            margin-left: auto;
+        }
+    }
+
+    &__button:hover {
+        background-color: $secondary-black;
         cursor: pointer;
     }
 
-    &__logo--tablet {
-        display: none;
 
-        @include tablet {
-            display: flex;
-        }
+    &__content-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+       
     }
 
-    &__logo--mobile {
-        @include tablet {
-            display: none;
-        }
+    &__error {
+        border: 1px solid $error;
     }
 
+    &__date {
+        display: flex;
+        @include mobile__body-copy;
+        color: $secondary-mercury;
+        position: relative;
+        margin-left: auto;
+    }
+
+    &__comment {
+        padding: 1rem 2.25rem;
+    }
 }
