@@ -24,57 +24,102 @@ function fetchComments() {
         .then(
             (response) => {
                 console.log(response);
+                const comments = response.data;
 
-                // displayComment(response.data)
-            }
-        )
-        .catch(
-            (error) => {
-                console.error(error);
-            }
-        );
+                // Grab comment section for the parent container
+                const commentSection = document.querySelector(".commentsection__comments");
+
+                // Loop over the comments 
+                for (let i = comments.length - 1; i >= 0; i--) {
+                    const comment = comments[i];
+                    displayComment(comment, commentSection);
+                }
+            })
+        .catch((error) => {
+            console.error(error);
+        });
 }
+
 fetchComments();
 
-// Need to populate the data from this get request into the page
 
-// Need to create a POST request
-// Do I need to add the url here? `${BASE_URL}/comments?api_key=${API_KEY}` ? 
-// function postComments() {} {
-//     axios.post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
-//         name: 'Chelsea',
-//         comment: 'Hi This is a comment'
-//     })
-//     .then(function (response) {
-//         // Post /comments  -- how to get this working? Need to append this to the form 
-        
-//         })
-//         .catch(function (error) {
-//             console.log(error);
-//         });
+//    Display comment item 
+function displayComment(comment, commentSection) {
+    const commentItemList = document.createElement("li");
+    commentItemList.classList.add("commentsection__list-item");
 
-// }
-// postComments();
+    // Comment Content Container
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("commentsection__content-container");
+    commentItemList.appendChild(contentContainer);
 
+    // Avatar Container
+    const avatarContainer = document.createElement("div");
+    avatarContainer.classList.add("commentsection__avatar-container");
+    contentContainer.appendChild(avatarContainer);
 
-// Array of predefined comments to load on page -- need to remove this array and replace it with get request
-const comments = [{
-        name: "Connor Walton",
-        date: "02/17/2021",
-        comment: "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-    }, {
-        name: "Emilie Beach",
-        date: "01/09/2021",
-        comment: "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-    },
-    {
-        name: "Miles Acosta",
-        date: "12/20/2020",
-        comment: "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-    },
-];
+    // Avatar 
+    const avatar = document.createElement("div");
+    avatar.classList.add("commentsection__avatar");
+    avatarContainer.appendChild(avatar);
 
+    // Name
+    const nameElement = document.createElement("p");
+    nameElement.classList.add("commentsection__name");
+    nameElement.textContent = comment.name;
+    contentContainer.appendChild(nameElement);
 
+    // Convert timestamp to Date object
+    const timestamp = new Date(comment.timestamp);
+
+    // Date
+    const dateElement = document.createElement("p");
+    dateElement.classList.add("commentsection__date");
+    dateElement.textContent = formatDate(timestamp);
+    contentContainer.appendChild(dateElement);
+
+    // Comment
+    const commentElement = document.createElement("p");
+    commentElement.classList.add("commentsection__comment");
+    commentElement.textContent = comment.comment;
+    commentItemList.appendChild(commentElement);
+
+    // Divider (bottom)
+    const dividerLineBottom = document.createElement("hr");
+    dividerLineBottom.classList.add("commentsection__divider");
+    commentItemList.appendChild(dividerLineBottom);
+
+    commentSection.appendChild(commentItemList);
+}
+
+function formatDate(date) {
+    const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "America/Toronto"
+    };
+
+    return date.toLocaleString("en-CA", options);
+}
+
+function postComments(name, comment) {
+    axios
+        .post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
+            name: name,
+            comment: comment,
+        })
+        .then((response) => {
+            const commentSection = document.querySelector(".commentsection__comments");
+            displayComment(response.data, commentSection);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
 // Grab the form as the Parent container
 const form = document.querySelector(".commentsection__form");
@@ -146,6 +191,8 @@ form.addEventListener("submit", (e) => {
 
     commentSection.insertBefore(newComment, commentSection.firstChild);
 
+    postComments(name, comment);
+
     form.reset();
 });
 
@@ -174,58 +221,4 @@ function getCurrentDate() {
 function removeError() {
     document.getElementById("name").classList.remove("commentsection__error");
     document.getElementById("comment").classList.remove("commentsection__error");
-}
-
-// Grab comment section for the parent container
-const commentSection = document.querySelector(".commentsection__comments");
-
-// Loop over the comments 
-for (let comment of comments) {
-    displayComment(comment, commentSection);
-}
-
-// Display comment item -- this will be replaced with the get request 
-function displayComment(comment, commentSection) {
-    const commentItemList = document.createElement("li");
-    commentItemList.classList.add("commentsection__list-item");
-
-    // Comment Content Container
-    const contentContainer = document.createElement("div");
-    contentContainer.classList.add("commentsection__content-container");
-    commentItemList.appendChild(contentContainer);
-
-    // Avatar Container
-    const avatarContainer = document.createElement("div");
-    avatarContainer.classList.add("commentsection__avatar-container");
-    contentContainer.appendChild(avatarContainer);
-
-    // Avatar 
-    const avatar = document.createElement("div");
-    avatar.classList.add("commentsection__avatar");
-    avatarContainer.appendChild(avatar);
-
-    // Name
-    const nameElement = document.createElement("p");
-    nameElement.classList.add("commentsection__name");
-    nameElement.textContent = comment.name;
-    contentContainer.appendChild(nameElement);
-
-    // Date
-    const dateElement = document.createElement("p");
-    dateElement.classList.add("commentsection__date");
-    dateElement.textContent = comment.date;
-    contentContainer.appendChild(dateElement);
-
-    // Comment
-    const commentElement = document.createElement("p");
-    commentElement.classList.add("commentsection__comment");
-    commentElement.textContent = comment.comment;
-    commentItemList.appendChild(commentElement);
-
-    // Divider (bottom)
-    const dividerLineBottom = document.createElement("hr");
-    dividerLineBottom.classList.add("commentsection__divider");
-    commentItemList.appendChild(dividerLineBottom);
-
-    commentSection.appendChild(commentItemList);
 }
