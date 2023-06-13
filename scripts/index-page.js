@@ -15,6 +15,7 @@ const API_KEY = "34dbda0f-4c31-43b8-90aa-1eda3e3f88a4";
 //         }
 //         fetchAPI();
 
+///////////////// COMMENTS /////////////////
 // Get /comments
 function fetchComments() {
     axios
@@ -38,8 +39,6 @@ function fetchComments() {
             console.error(error);
         });
 }
-
-fetchComments();
 
 // Display comment item
 function displayComment(comment, commentSection) {
@@ -113,6 +112,101 @@ function displayComment(comment, commentSection) {
     commentSection.appendChild(commentItemList);
 }
 
+// Add likes counter and append to like button
+function updateLikeCounter(commentId, likes) {
+    const likeCounter = document.querySelector(`.commentsection__like-counter[data-comment-id="${commentId}"]`);
+    likeCounter.textContent = `${likes} likes`;
+}
+
+// Add delete function to delete the comment
+function updateDelete(commentId) {
+    const commentItem = document.querySelector(
+        `.commentsection__list-item[data-comment-id="${commentId}"]`
+    );
+
+    // Show confirmation alert
+    const confirmDelete = confirm("Are you sure you want to delete this comment?");
+
+    if (confirmDelete) {
+        // Perform delete action
+        commentItem.remove();
+
+        // Add /Delete request
+        axios
+            .delete(`${BASE_URL}/comments/${commentId}/?api_key=${API_KEY}`)
+            .then((response) => {
+                console.log("Comment deleted successfully.");
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+}
+
+// Post /comments
+function postComments(name, comment) {
+    axios
+        .post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
+            name: name,
+            comment: comment,
+        })
+        .then((response) => {
+            const commentSection = document.querySelector(".commentsection__comments");
+            const newComment = response.data;
+            newComment.likes = 0;
+            displayComment(newComment, commentSection);
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+///////////////// FORMAT /////////////////
+// Formats the timestamp to a readable format
+function formatDate(date) {
+    const options = {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "America/Toronto",
+    };
+
+    return date.toLocaleString("en-CA", options);
+}
+
+// Get the current date in the format of MM/DD/YYYY
+function getCurrentDate() {
+    const currentDate = new Date();
+    const month = currentDate.getMonth() + 1;
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    const hours = currentDate.getHours();
+    const minutes = currentDate.getMinutes();
+    const seconds = currentDate.getSeconds();
+
+    // Timestamps ago
+    if (hours < 60) {
+        return `${day}/${month}/${year} - Posted ${seconds} seconds ago`;
+    } else if (minutes < 60) {
+        return `${day}/${month}/${year} - Posted ${minutes} minutes ago`;
+    } else {
+        return `${day}/${month}/${year} - Posted ${hours} hours ago`;
+    }
+}
+
+// Handles removing error styles
+function removeError() {
+    document.getElementById("name").classList.remove("commentsection__error");
+    document.getElementById("comment").classList.remove("commentsection__error");
+}   
+
+fetchComments();
+
+///////////////// LISTENERS /////////////////
 //Add click event listener for the likes counter
 const commentSection = document.querySelector(".commentsection__comments");
 
@@ -135,45 +229,17 @@ commentSection.addEventListener("click", (event) => {
     }
 });
 
-// Add likes counter and append to like button
-function updateLikeCounter(commentId, likes) {
-    const likeCounter = document.querySelector(`.commentsection__like-counter[data-comment-id="${commentId}"]`);
-    likeCounter.textContent = `${likes} likes`;
-}
 
-// Formats the timestamp to a readable format
-function formatDate(date) {
-    const options = {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZone: "America/Toronto",
-    };
+// Add click event listener for the delete button
+commentSection.addEventListener("click", (event) => {
+    if (event.target.classList.contains("commentsection__delete")) {
+        const deleteButton = event.target;
+        const commentItem = deleteButton.closest(".commentsection__list-item");
+        const commentId = commentItem.dataset.commentId;
 
-    return date.toLocaleString("en-CA", options);
-}
-
-// Post /comments
-function postComments(name, comment) {
-    axios
-        .post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
-            name: name,
-            comment: comment,
-        })
-        .then((response) => {
-            const commentSection = document.querySelector(
-                ".commentsection__comments"
-            );
-            displayComment(response.data, commentSection);
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
+        updateDelete(commentId);
+    }
+});
 
 // Grab the form as the Parent container
 const form = document.querySelector(".commentsection__form");
@@ -238,6 +304,25 @@ form.addEventListener("submit", (e) => {
     commentElement.textContent = comment;
     newComment.appendChild(commentElement);
 
+    // Like
+    const likeButton = document.createElement("button");
+    likeButton.classList.add("commentsection__like");
+    likeButton.textContent = "Like";
+    newComment.appendChild(likeButton);
+
+    // Like Counter
+    const likeCounter = document.createElement("p");
+    likeCounter.classList.add("commentsection__like-counter");
+    likeCounter.textContent = `${comment.likes} likes`;
+    likeCounter.setAttribute("data-comment-id", comment.id);
+    newComment.appendChild(likeCounter);
+
+    // Delete
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("commentsection__delete");
+    deleteButton.textContent = "Delete";
+    newComment.appendChild(deleteButton);
+
     // Divider (bottom)
     const dividerLineBottom = document.createElement("hr");
     dividerLineBottom.classList.add("commentsection__divider");
@@ -249,29 +334,3 @@ form.addEventListener("submit", (e) => {
 
     form.reset();
 });
-
-// Get the current date in the format of MM/DD/YYYY
-function getCurrentDate() {
-    const currentDate = new Date();
-    const month = currentDate.getMonth() + 1;
-    const day = currentDate.getDate();
-    const year = currentDate.getFullYear();
-    const hours = currentDate.getHours();
-    const minutes = currentDate.getMinutes();
-    const seconds = currentDate.getSeconds();
-
-    // Timestamps ago
-    if (hours < 60) {
-        return `${day}/${month}/${year} - Posted ${seconds} seconds ago`;
-    } else if (minutes < 60) {
-        return `${day}/${month}/${year} - Posted ${minutes} minutes ago`;
-    } else {
-        return `${day}/${month}/${year} - Posted ${hours} hours ago`;
-    }
-}
-
-// Handles removing error styles
-function removeError() {
-    document.getElementById("name").classList.remove("commentsection__error");
-    document.getElementById("comment").classList.remove("commentsection__error");
-}
