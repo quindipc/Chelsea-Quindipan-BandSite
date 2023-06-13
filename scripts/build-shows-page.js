@@ -1,6 +1,6 @@
 // API
 const BASE_URL = "https://project-1-api.herokuapp.com";
-const API_KEY = "ac63cb3f-a872-4258-a166-574d2ca85da4";
+const API_KEY = "34dbda0f-4c31-43b8-90aa-1eda3e3f88a4";
 
 // Get /showdates
 function fetchShows() {
@@ -9,54 +9,30 @@ function fetchShows() {
         .then(
             (response) => {
                 console.log(response);
-            }
-        )
+                const showsData = response.data;
+
+                // Loop over the shows data and create show items
+                showsData.forEach((show) => {
+
+                    // Date into readable format
+                    const date = new Date(show.date);
+                    const formattedDate = date.toDateString();
+
+                    createShowItem({
+                        date: formattedDate,
+                        venue: show.place,
+                        location: show.location,
+                    });
+                });
+            })
         .catch(
             (error) => {
                 console.error(error);
             }
-    );
+        );
 
-    
-    
 }
 fetchShows();
-
-
-//  Shows info
-const showsHeader = "Shows";
-
-const shows = [{
-        date: "Mon Sept 06 2021",
-        venue: "Ronald Lane",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Tue Sept 21 2021",
-        venue: "Pier 3 East",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Oct 15 2021",
-        venue: "View Lounge",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Sat Nov 06 2021",
-        venue: "Hyatt Agency",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Fri Nov 26 2021",
-        venue: "Moscow Center",
-        location: "San Francisco, CA"
-    },
-    {
-        date: "Wed Dec 15 2021",
-        venue: "Press Club",
-        location: "San Francisco, CA"
-    },
-]
 
 // Parent Container for shows
 const showsContainer = document.querySelector(".shows__list");
@@ -64,7 +40,7 @@ const showsContainer = document.querySelector(".shows__list");
 // Header for the shows container
 const headerTitle = document.createElement("h2");
 headerTitle.classList.add("shows__title");
-headerTitle.textContent = showsHeader;
+headerTitle.textContent = "Shows";
 showsContainer.appendChild(headerTitle);
 
 // List Container
@@ -91,7 +67,7 @@ locationSubheader.textContent = "Location";
 
 const spaceSubheader = document.createElement("h3");
 spaceSubheader.classList.add("shows__subheader--tablet");
-spaceSubheader.textContent = "EMPTY";
+spaceSubheader.textContent = "";
 
 // Append the Date, Venue, and Location elements to the tablet header
 tabletHeader.appendChild(dateSubheader);
@@ -101,17 +77,6 @@ tabletHeader.appendChild(spaceSubheader);
 
 // Append the tablet header to the shows container
 showsListContainer.appendChild(tabletHeader);
-
-// Loop to iterate over the shows array
-for (let i = 0; i < shows.length; i++) {
-    const show = shows[i];
-    createShowItem(show);
-
-    if (i !== shows.length - 1) {
-        appendDividerLine(showsListContainer);
-    }
-}
-
 
 // Creates a show item
 function createShowItem(show) {
