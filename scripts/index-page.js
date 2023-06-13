@@ -1,7 +1,6 @@
 // API
 const BASE_URL = "https://project-1-api.herokuapp.com";
-const API_KEY = "ac63cb3f-a872-4258-a166-574d2ca85da4";
-
+const API_KEY = "34dbda0f-4c31-43b8-90aa-1eda3e3f88a4";
 
 // // Get /register -- only use once
 // function fetchAPI() {
@@ -16,25 +15,25 @@ const API_KEY = "ac63cb3f-a872-4258-a166-574d2ca85da4";
 //         }
 //         fetchAPI();
 
-
-// Get /comments 
+// Get /comments
 function fetchComments() {
     axios
         .get(`${BASE_URL}/comments?api_key=${API_KEY}`)
-        .then(
-            (response) => {
-                console.log(response);
-                const comments = response.data;
+        .then((response) => {
+            console.log(response);
+            const comments = response.data;
 
-                // Grab comment section for the parent container
-                const commentSection = document.querySelector(".commentsection__comments");
+            // Grab comment section for the parent container
+            const commentSection = document.querySelector(
+                ".commentsection__comments"
+            );
 
-                // Loop over the comments 
-                for (let i = comments.length - 1; i >= 0; i--) {
-                    const comment = comments[i];
-                    displayComment(comment, commentSection);
-                }
-            })
+            // Loop over the comments
+            for (let i = comments.length - 1; i >= 0; i--) {
+                const comment = comments[i];
+                displayComment(comment, commentSection);
+            }
+        })
         .catch((error) => {
             console.error(error);
         });
@@ -42,8 +41,7 @@ function fetchComments() {
 
 fetchComments();
 
-
-//    Display comment item 
+// Display comment item
 function displayComment(comment, commentSection) {
     const commentItemList = document.createElement("li");
     commentItemList.classList.add("commentsection__list-item");
@@ -58,7 +56,7 @@ function displayComment(comment, commentSection) {
     avatarContainer.classList.add("commentsection__avatar-container");
     contentContainer.appendChild(avatarContainer);
 
-    // Avatar 
+    // Avatar
     const avatar = document.createElement("div");
     avatar.classList.add("commentsection__avatar");
     avatarContainer.appendChild(avatar);
@@ -84,14 +82,66 @@ function displayComment(comment, commentSection) {
     commentElement.textContent = comment.comment;
     commentItemList.appendChild(commentElement);
 
+    // ID linked to individual comment for likes
+    commentItemList.dataset.commentId = comment.id;
+
+    // Like
+    const likeButton = document.createElement("button");
+    likeButton.classList.add("commentsection__like");
+    likeButton.textContent = "Like";
+    commentItemList.appendChild(likeButton);
+
+    // Like Counter
+    const likeCounter = document.createElement("p");
+    likeCounter.classList.add("commentsection__like-counter");
+    likeCounter.textContent = `${comment.likes} likes`;
+    likeCounter.setAttribute("data-comment-id", comment.id);
+    commentItemList.appendChild(likeCounter);
+
+    //Delete
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("commentsection__delete");
+    deleteButton.textContent = "Delete";
+    commentItemList.appendChild(deleteButton);
+
     // Divider (bottom)
     const dividerLineBottom = document.createElement("hr");
     dividerLineBottom.classList.add("commentsection__divider");
     commentItemList.appendChild(dividerLineBottom);
 
+
     commentSection.appendChild(commentItemList);
 }
 
+//Add click event listener for the likes counter
+const commentSection = document.querySelector(".commentsection__comments");
+
+commentSection.addEventListener("click", (event) => {
+    if (event.target.classList.contains("commentsection__like")) {
+        const likeButton = event.target;
+        const commentItem = likeButton.closest(".commentsection__list-item");
+        const commentId = commentItem.dataset.commentId;
+
+        // Add /Put request
+        axios
+            .put(`${BASE_URL}/comments/${commentId}/like?api_key=${API_KEY}`)
+            .then((response) => {
+                const updatedComment = response.data;
+                updateLikeCounter(commentId, updatedComment.likes);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+});
+
+// Add likes counter and append to like button
+function updateLikeCounter(commentId, likes) {
+    const likeCounter = document.querySelector(`.commentsection__like-counter[data-comment-id="${commentId}"]`);
+    likeCounter.textContent = `${likes} likes`;
+}
+
+// Formats the timestamp to a readable format
 function formatDate(date) {
     const options = {
         year: "numeric",
@@ -100,12 +150,13 @@ function formatDate(date) {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
-        timeZone: "America/Toronto"
+        timeZone: "America/Toronto",
     };
 
     return date.toLocaleString("en-CA", options);
 }
 
+// Post /comments
 function postComments(name, comment) {
     axios
         .post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
@@ -113,7 +164,9 @@ function postComments(name, comment) {
             comment: comment,
         })
         .then((response) => {
-            const commentSection = document.querySelector(".commentsection__comments");
+            const commentSection = document.querySelector(
+                ".commentsection__comments"
+            );
             displayComment(response.data, commentSection);
         })
         .catch((error) => {
@@ -121,10 +174,11 @@ function postComments(name, comment) {
         });
 }
 
+
 // Grab the form as the Parent container
 const form = document.querySelector(".commentsection__form");
 
-// Add submit event listener so user can create new comment -- This may be replaced by POST request ? append to post request? 
+// Add submit event listener so user can create new comment
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -142,7 +196,7 @@ form.addEventListener("submit", (e) => {
 
     const commentSection = document.querySelector(".commentsection__comments");
 
-    // New comment list 
+    // New comment list
     const newComment = document.createElement("li");
     newComment.classList.add("commentsection__list-item");
 
@@ -161,7 +215,7 @@ form.addEventListener("submit", (e) => {
     avatarContainer.classList.add("commentsection__avatar-container");
     contentContainer.appendChild(avatarContainer);
 
-    // Avatar 
+    // Avatar
     const avatar = document.createElement("img");
     avatar.classList.add("commentsection__avatar");
     avatarContainer.appendChild(avatar);
@@ -214,7 +268,6 @@ function getCurrentDate() {
     } else {
         return `${day}/${month}/${year} - Posted ${hours} hours ago`;
     }
-
 }
 
 // Handles removing error styles
