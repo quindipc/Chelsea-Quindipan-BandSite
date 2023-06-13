@@ -2,6 +2,7 @@
 const BASE_URL = "https://project-1-api.herokuapp.com";
 const API_KEY = "34dbda0f-4c31-43b8-90aa-1eda3e3f88a4";
 
+///////////////// SHOWS /////////////////
 // Get /showdates
 function fetchShows() {
     axios
@@ -13,7 +14,7 @@ function fetchShows() {
 
                 // Loop over the shows data and create show items
                 showsData.forEach((show) => {
-
+ 
                     // Date into readable format
                     const date = new Date(show.date);
                     const formattedDate = date.toDateString();
@@ -113,16 +114,6 @@ function createShowItem(show) {
     showsListContainer.appendChild(showsItemList);
 }
 
-// Function to toggle background color
-function toggleBackgroundColor(element) {
-    const backgroundColor = element.style.backgroundColor;
-    if (backgroundColor && backgroundColor === "rgb(225, 225, 225)") {
-        element.style.backgroundColor = "";
-    } else {
-        element.style.backgroundColor = "#e1e1e1";
-    }
-}
-
 // Function to add the shows subheader and shows info to the parent
 function appendSubheader(parent, label, text) {
     const subheader = document.createElement("h3");
@@ -142,4 +133,15 @@ function appendDividerLine(parent) {
     const dividerLine = document.createElement("hr");
     dividerLine.classList.add("shows__divider");
     parent.appendChild(dividerLine);
+}
+
+///////////////// TOGGLE /////////////////
+// Function to toggle background color
+function toggleBackgroundColor(element) {
+    const backgroundColor = element.style.backgroundColor;
+    if (backgroundColor && backgroundColor === "rgb(225, 225, 225)") {
+        element.style.backgroundColor = "";
+    } else {
+        element.style.backgroundColor = "#e1e1e1";
+    }
 }
