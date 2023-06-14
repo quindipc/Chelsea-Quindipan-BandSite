@@ -151,7 +151,7 @@ body {
     flex-direction: column;
     color: $primary-white;
     background-color: $primary-black;
-    padding: 1rem;
+    padding: 2.25rem 1rem;
     @include mobile__footer-copy;
 
     @include tablet {
@@ -182,8 +182,10 @@ body {
             display: flex;
             flex-direction: row;
             align-items: baseline;
+            margin-right: auto;
+            padding-top: 0.5rem;
+            padding-left: 4rem;
         }
-
     }
 
     &__container-contact {
@@ -210,6 +212,7 @@ body {
         padding-top: 1rem;
 
         @include tablet {
+            padding-top: 0;
             padding-left: 1rem;
         }
     }

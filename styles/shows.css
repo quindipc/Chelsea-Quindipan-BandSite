@@ -153,7 +153,7 @@ body {
   flex-direction: column;
   color: #FFFFFF;
   background-color: #323232;
-  padding: 1rem;
+  padding: 2.25rem 1rem;
   font-size: 13px;
   line-height: 18px;
   font-weight: 400;
@@ -184,6 +184,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    margin-right: auto;
+    padding-top: 0.5rem;
+    padding-left: 4rem;
   }
 }
 @media screen and (min-width: 768px) {
@@ -211,6 +214,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .footer__icon {
+    padding-top: 0;
     padding-left: 1rem;
   }
 }

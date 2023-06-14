@@ -13,12 +13,12 @@
         margin-left: 1rem;
         transform: translateY(-50%);
         text-align: left;
-        
+
         @include tablet {
             @include desktop__page-header;
             padding: 2.25rem;
         }
-        
+
     }
 }
 
@@ -27,7 +27,7 @@
     padding: 1.5rem 1rem;
 
     @include tablet {
-        padding: 2.25rem 3rem;
+        padding:3rem 2.25rem;
     }
 
     &__title {
@@ -80,11 +80,13 @@
         @include mobile__subheader;
 
         @include tablet {
+            padding-top: 2.25rem;
             @include desktop__subheader;
         }
     }
 
     &__quote-author {
+        padding-top: 1rem;  
         @include mobile__subheader;
     }
 
@@ -93,6 +95,7 @@
         padding: 1.5rem 0 1rem;
 
         @include tablet {
+            padding: 2.25rem 0 1rem;
             @include desktop__subheader;
 
         }
@@ -137,7 +140,7 @@
         display: flex;
         flex-direction: column;
         background-color: $secondary-alabaster;
-        padding-top: 1.5rem;
+        padding: 1.5rem 1rem;
 
         @include tablet {
             padding-top: 3rem;
@@ -148,7 +151,7 @@
         @include tablet {
             display: flex;
             flex-wrap: wrap;
-            padding: 3rem;
+            padding: 2.25rem;
         }
     }
 
@@ -214,7 +217,7 @@
         width: 2.25rem;
         height: 2.25rem;
         margin: 1.5rem 0;
-        object-fit:cover;
+        object-fit: cover;
         background-color: $secondary-mercury;
 
         @include tablet {
@@ -298,7 +301,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-       
+
     }
 
     &__error {
@@ -316,4 +319,84 @@
     &__comment {
         padding: 1rem 2.25rem;
     }
+
+    &__button {
+        @include button;
+    }
+
+    &__actions-container {
+        display: flex;
+        justify-content: flex-end;
+        padding: .5rem 0;
+    }
+
+    &__like-counter {
+        color: $primary-silver;
+        margin-right: auto;
+        padding-top: .5rem;
+    }
+
+    &__like {
+        margin: 0 1rem;
+        position: relative;
+        height: 25px;
+        width: 15px;
+        border-radius: 100px 100px 0 0;
+        transform: rotate(45deg);
+        transition: all 0.5s;
+        cursor: pointer;
+        background-color: $secondary-mercury;
+    }
+
+    &__like::before {
+        content: '';
+        position: absolute;
+        background-color: $secondary-mercury;
+        height: 25px;
+        width: 15px;
+        transform: rotate(-90deg);
+        border-radius: 100px 100px 0 0;
+        left: -5px;
+        top: 5px;
+        transition: all 0.5s;
+    }
+
+    &__like:hover, &__like:hover::before{
+        background-color: $error;
+        cursor: pointer;
+    }
+
+    &__delete {
+        position: relative;
+        width: .9375rem;
+        height: .9375rem;
+        background-color: $secondary-mercury;
+        border: none;
+    }
+
+    &__delete::before,
+    &__delete::after {
+        position: absolute;
+        content: '';
+        width: .125rem;
+        height: .9375rem;
+        background-color: $primary-white;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__delete::before {
+        transform: rotate(45deg);
+    }
+
+    &__delete::after {
+        transform: rotate(-45deg);
+    }
+
+    &__delete:hover{
+        background-color: $secondary-black; 
+        cursor: pointer;
+    }
+
 }

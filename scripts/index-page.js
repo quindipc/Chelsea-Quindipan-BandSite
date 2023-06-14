@@ -81,27 +81,30 @@ function displayComment(comment, commentSection) {
     commentElement.textContent = comment.comment;
     commentItemList.appendChild(commentElement);
 
+    // Actions Container
+    const actionsContainer = document.createElement("div");
+    actionsContainer.classList.add("commentsection__actions-container");
+    commentItemList.appendChild(actionsContainer);
+
     // ID linked to individual comment for likes
     commentItemList.dataset.commentId = comment.id;
 
     // Like
-    const likeButton = document.createElement("button");
+    const likeButton = document.createElement("div");
     likeButton.classList.add("commentsection__like");
-    likeButton.textContent = "Like";
-    commentItemList.appendChild(likeButton);
+    actionsContainer.appendChild(likeButton);
 
     // Like Counter
     const likeCounter = document.createElement("p");
     likeCounter.classList.add("commentsection__like-counter");
-    likeCounter.textContent = `${comment.likes} likes`;
+    likeCounter.textContent = `${comment.likes}`;
     likeCounter.setAttribute("data-comment-id", comment.id);
-    commentItemList.appendChild(likeCounter);
+    actionsContainer.appendChild(likeCounter);
 
     //Delete
-    const deleteButton = document.createElement("button");
+    const deleteButton = document.createElement("div");
     deleteButton.classList.add("commentsection__delete");
-    deleteButton.textContent = "Delete";
-    commentItemList.appendChild(deleteButton);
+    actionsContainer.appendChild(deleteButton);
 
     // Divider (bottom)
     const dividerLineBottom = document.createElement("hr");
@@ -149,13 +152,13 @@ function postComments(name, comment) {
         .post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
             name: name,
             comment: comment,
+            // likes: likes,
         })
-        .then((response) => {
+        .then(() => {
             const commentSection = document.querySelector(".commentsection__comments");
-            const newComment = response.data;
-            newComment.likes = 0;
-            displayComment(newComment, commentSection);
+            const newComment = document.querySelector(".commentsection__list-item");
 
+            displayComment(newComment, commentSection);
         })
         .catch((error) => {
             console.log(error);
@@ -202,11 +205,105 @@ function getCurrentDate() {
 function removeError() {
     document.getElementById("name").classList.remove("commentsection__error");
     document.getElementById("comment").classList.remove("commentsection__error");
-}   
+}
 
 fetchComments();
 
 ///////////////// LISTENERS /////////////////
+// Grab the form as the Parent container
+const form = document.querySelector(".commentsection__form");
+
+// Add submit event listener so user can create new comment
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const comment = form.comment.value;
+
+
+    if (!name || !comment) {
+        document.getElementById("name").classList.add("commentsection__error");
+        document.getElementById("comment").classList.add("commentsection__error");
+        return;
+    }
+
+    removeError();
+
+    const commentSection = document.querySelector(".commentsection__comments");
+
+    // New comment list
+    const newComment = document.createElement("li");
+    newComment.classList.add("commentsection__list-item");
+
+    // Comment Content Container
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("commentsection__content-container");
+    newComment.appendChild(contentContainer);
+
+    // Avatar Container
+    const avatarContainer = document.createElement("div");
+    avatarContainer.classList.add("commentsection__avatar-container");
+    contentContainer.appendChild(avatarContainer);
+
+    // Avatar
+    const avatar = document.createElement("img");
+    avatar.classList.add("commentsection__avatar");
+    avatarContainer.appendChild(avatar);
+
+    // Name
+    const nameElement = document.createElement("p");
+    nameElement.classList.add("commentsection__name");
+    nameElement.textContent = name;
+    contentContainer.appendChild(nameElement);
+
+    // Date
+    const dateElement = document.createElement("p");
+    dateElement.classList.add("commentsection__date");
+    dateElement.textContent = getCurrentDate();
+    contentContainer.appendChild(dateElement);
+
+    // Comment
+    const commentElement = document.createElement("p");
+    commentElement.classList.add("commentsection__comment");
+    commentElement.textContent = comment;
+    newComment.appendChild(commentElement);
+
+    // Actions Container
+    const actionsContainer = document.createElement("div");
+    actionsContainer.classList.add("commentsection__actions-container");
+    newComment.appendChild(actionsContainer);
+
+    // Like
+    const likeButton = document.createElement("div");
+    likeButton.classList.add("commentsection__like");
+    actionsContainer.appendChild(likeButton);
+
+    // Like Counter
+    const likeCounter = document.createElement("p");
+    likeCounter.classList.add("commentsection__like-counter");
+    likeCounter.textContent = `${comment.likes}`;
+    likeCounter.setAttribute("data-comment-id", comment.id);
+    actionsContainer.appendChild(likeCounter);
+
+    //Delete
+    const deleteButton = document.createElement("div");
+    deleteButton.classList.add("commentsection__delete");
+    actionsContainer.appendChild(deleteButton);
+
+    // Divider (bottom)
+    const dividerLineBottom = document.createElement("hr");
+    dividerLineBottom.classList.add("commentsection__divider");
+    newComment.appendChild(dividerLineBottom);
+
+    commentSection.insertBefore(newComment, commentSection.firstChild);
+
+    postComments(name, comment);
+
+    form.reset();
+});
+
+
 //Add click event listener for the likes counter
 const commentSection = document.querySelector(".commentsection__comments");
 
@@ -239,98 +336,4 @@ commentSection.addEventListener("click", (event) => {
 
         updateDelete(commentId);
     }
-});
-
-// Grab the form as the Parent container
-const form = document.querySelector(".commentsection__form");
-
-// Add submit event listener so user can create new comment
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const name = form.name.value;
-    const comment = form.comment.value;
-
-    if (!name || !comment) {
-        document.getElementById("name").classList.add("commentsection__error");
-        document.getElementById("comment").classList.add("commentsection__error");
-        return;
-    }
-
-    removeError();
-
-    const commentSection = document.querySelector(".commentsection__comments");
-
-    // New comment list
-    const newComment = document.createElement("li");
-    newComment.classList.add("commentsection__list-item");
-
-    // Comment Content Container
-    const contentContainer = document.createElement("div");
-    contentContainer.classList.add("commentsection__content-container");
-    newComment.appendChild(contentContainer);
-
-    // Divider Line
-    const dividerLine = document.createElement("hr");
-    dividerLine.classList.add("commentsection__divider");
-    contentContainer.appendChild(dividerLine);
-
-    // Avatar Container
-    const avatarContainer = document.createElement("div");
-    avatarContainer.classList.add("commentsection__avatar-container");
-    contentContainer.appendChild(avatarContainer);
-
-    // Avatar
-    const avatar = document.createElement("img");
-    avatar.classList.add("commentsection__avatar");
-    avatarContainer.appendChild(avatar);
-
-    // Name
-    const nameElement = document.createElement("p");
-    nameElement.classList.add("commentsection__name");
-    nameElement.textContent = name;
-    contentContainer.appendChild(nameElement);
-
-    // Date
-    const dateElement = document.createElement("p");
-    dateElement.classList.add("commentsection__date");
-    dateElement.textContent = getCurrentDate();
-    contentContainer.appendChild(dateElement);
-
-    // Comment
-    const commentElement = document.createElement("p");
-    commentElement.classList.add("commentsection__comment");
-    commentElement.textContent = comment;
-    newComment.appendChild(commentElement);
-
-    // Like
-    const likeButton = document.createElement("button");
-    likeButton.classList.add("commentsection__like");
-    likeButton.textContent = "Like";
-    newComment.appendChild(likeButton);
-
-    // Like Counter
-    const likeCounter = document.createElement("p");
-    likeCounter.classList.add("commentsection__like-counter");
-    likeCounter.textContent = `${comment.likes} likes`;
-    likeCounter.setAttribute("data-comment-id", comment.id);
-    newComment.appendChild(likeCounter);
-
-    // Delete
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("commentsection__delete");
-    deleteButton.textContent = "Delete";
-    newComment.appendChild(deleteButton);
-
-    // Divider (bottom)
-    const dividerLineBottom = document.createElement("hr");
-    dividerLineBottom.classList.add("commentsection__divider");
-    newComment.appendChild(dividerLineBottom);
-
-    commentSection.insertBefore(newComment, commentSection.firstChild);
-
-    postComments(name, comment);
-
-    form.reset();
 });

@@ -105,3 +105,21 @@
     stroke-width: 1px;
     color: $secondary-mercury
 }
+
+
+//Button styles 
+@mixin button {
+        text-transform: uppercase;
+        @include mobile__labels-buttons;
+        background-color: $primary-black;
+        color: $primary-white;
+        @include cta;
+        width: 100%;
+
+
+        @include tablet {
+            @include desktop__labels-buttons;
+            width: 9.375rem;
+            margin-left: auto;
+        }
+}
