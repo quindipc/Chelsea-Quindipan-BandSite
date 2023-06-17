@@ -1,0 +1,239 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+// Header Styles
+.header {
+  background: $primary-black;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @include tablet {
+      @include desktop__body-copy;
+      padding: 1rem 2.25rem;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+  }
+
+  @include desktop {
+      padding: auto;
+  }
+
+  &__nav {
+      width: 100%;
+
+      @include mobile__body-copy;
+
+      @include tablet {
+          @include desktop__body-copy;
+          display: flex;
+          align-items: center;
+      }
+
+  }
+
+  &__logo-container {
+      display: flex;
+      justify-content: center;
+  }
+
+  &__logo {
+      max-height: 1.25rem;
+      max-width: 7.5rem;
+  }
+
+  &__navlist {
+      display: flex;
+      list-style: none;
+      align-items: flex-end;
+  }
+
+
+  &__navlist-item {
+      flex: 0 1 50%;
+      justify-content: center;
+      position: relative;
+      top: 1rem;
+      padding-bottom: .5rem;
+
+      @include tablet {
+          padding-bottom: 1.5rem;
+          margin-right: 3rem;
+          margin-left: 3rem;
+      }
+  }
+
+  &__navlist--hover {
+      color: $primary-white;
+      text-decoration: none;
+      list-style: none;
+  }
+
+  &__navlist--hover:hover {
+      color: $primary-white;
+      padding-bottom: .7rem;
+      border-bottom: .25rem solid white;
+      cursor: pointer;
+
+      @include tablet {
+          padding-bottom: 1.7rem;
+      }
+  }
+
+  &__navlist-item.active {
+      border-bottom: .25rem solid white;
+      font-weight: 700;
+  }
+
+
+  &__navlist-item.unactive {
+      border-bottom: .25rem solid transparent;
+      color: $secondary-mercury;
+  }
+}
+
+
+// Hero Styles
+.hero {
+  display: flex;
+  overflow: hidden;
+
+  &__container {
+      position: relative;
+      width: 100%;
+  }
+
+  &__image {
+      position: relative;
+      width: 100%;
+      z-index: 1;
+  }
+
+  &__container-image::before {
+      content: "";
+      position: absolute;
+      background-color: rgba(50, 50, 50, 0.5);
+      width: 100%;
+      bottom: .33rem;
+      height: 100%;
+      z-index: 2;
+      overflow: hidden;
+
+      @include tablet {
+          height: 100%;
+          overflow: hidden;
+      }
+  }
+}
+
+
+
+// Footer Styles 
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  color: $primary-white;
+  background-color: $primary-black;
+  padding: 2.25rem 1rem;
+  @include mobile__footer-copy;
+
+  @include tablet {
+      padding: 2.25rem 3rem;
+  }
+
+  &__container {
+      margin-top: 1.5rem;
+  }
+
+  &__container--space {
+      @include tablet {
+          padding-left: 3rem;
+      }
+  }
+
+  &__container--one {
+      @include tablet {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin-top: 0;
+      }
+      @include desktop {
+        // max-width: 63.75rem;
+      }
+  }
+
+  &__container-icons {
+      @include tablet {
+          display: flex;
+          flex-direction: row;
+          align-items: baseline;
+          margin-right: auto;
+          padding-top: 0.5rem;
+          padding-left: 4rem;
+      }
+  }
+
+  &__container-contact {
+
+      @include tablet {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+      }
+  }
+
+  &__container-copyright {
+      padding-top: 3rem;
+      @include mobile__footer-copy;
+  }
+
+  &__title {
+      @include mobile__page-header;
+  }
+
+  &__icon {
+      flex-direction: row;
+      padding-right: 2rem;
+      padding-top: 1rem;
+
+      @include tablet {
+          padding-top: 0;
+          padding-left: 1rem;
+      }
+  }
+
+  &__subheading-container {
+      margin-bottom: 1rem;
+
+  }
+
+  &__info-container {
+      margin-bottom: 1rem;
+  }
+
+  &__mailto {
+      color: $primary-white;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  &__logo--tablet {
+      display: none;
+
+      @include tablet {
+          display: flex;
+      }
+  }
+
+  &__logo--mobile {
+      @include tablet {
+          display: none;
+      }
+  }
+
+}

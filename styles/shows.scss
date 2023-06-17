@@ -1,201 +1,199 @@
 @use "./partials/resets";
-@use "./partials/variables"as *;
-@use "./partials/mixins"as *;
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+@use "./partials/global";
 
 // HERO STYLES
 .hero {
+  &__container-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    padding: 1rem;
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        position: relative;
+    @include tablet {
+      padding: 2.25rem;
     }
 
-    &__container-content {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-evenly;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 3;
-        padding: 1rem;
-        
-        @include tablet {
-            padding: 2.25rem;
-        }
-
-        @include desktop {
-            flex-direction: row;
-            top: 50%;
-        }
+    @include desktop {
+      flex-direction: row;
+      top: 50%;
     }
+  }
 
-    &__container-header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+  &__container-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__album {
+    @include mobile__subheader;
+    color: $primary-white;
+
+    @include tablet {
+      @include desktop__subheader;
     }
+  }
 
-    &__album {
-        @include mobile__subheader;
-        color: $primary-white;
+  &__title {
+    @include mobile__page-header;
+    color: $primary-white;
 
-        @include tablet {
-            @include desktop__subheader;
-        }
+    @include tablet {
+      @include desktop__page-header;
     }
+  }
 
-    &__title {
-        @include mobile__page-header;
-        color: $primary-white;
+  &__music {
+    height: 7rem;
 
-        @include tablet {
-            @include desktop__page-header;
-        }
-
+    @include tablet {
+      width: 40rem;
+      height: 10rem;
     }
-
-
-    &__music {
-        height: 7rem; 
-
-        @include tablet {
-            width: 40rem;
-            height: 10rem;
-        }
-        @include desktop {
-            width: 30rem;
-        }
+    @include desktop {
+      width: 30rem;
     }
+  }
 }
 
 .shows {
-    padding: 1rem 1rem;
+  padding: 1rem 1rem;
+
+  @include tablet {
+    padding: 1.5rem 1.125rem;
+  }
+
+  &__list {
+    @include desktop {
+      display: flex;
+    }
+  }
+
+  &__title {
+    padding: 1rem;
+    @include mobile__section-header;
+
+    @include desktop {
+      @include desktop__section-header;
+      display: flex;
+      flex: 1;
+    }
+  }
+
+  &__subheader--tablet {
+    display: none;
 
     @include tablet {
-        padding: 1.5rem 1.125rem;
+      display: flex;
+      flex-direction: row;
+      @include desktop__body-copy;
+      color: $primary-silver;
+      text-transform: uppercase;
+      flex: 0 1 25%;
     }
+  }
 
-    &__list {
-        @include desktop {
-            display: flex;
-        }
+  &__list-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  &__list-container {
+    @include desktop {
+      flex: 3;
     }
+  }
 
-    &__title {
-        padding: 1rem;
-        @include mobile__section-header;
+  &__list-item {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
 
-        @include desktop {
-            @include desktop__section-header;
-            display: flex;
-            flex: 1;
-        }
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
+  }
 
-    &__subheader--tablet {
-        display: none;
+  &__list-item.selected {
+    background-color: $secondary-mercury;
+    
+}
 
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            @include desktop__body-copy;
-            color: $primary-silver;
-            text-transform: uppercase;
-            flex: 0 1 25%;
-        }
+&__list-item.selected:hover {
+      background-color: $secondary-mercury;
+  }
+
+  &__info {
+    flex: 0 1 25%;
+  }
+
+  &__info:nth-child(2) {
+    font-weight: bold;
+  }
+
+  &__list-item:hover {
+    background-color: $secondary-alabaster;
+    cursor: pointer;
+  }
+
+  &__subheader {
+    @include mobile__body-copy;
+    color: $primary-silver;
+    text-transform: uppercase;
+    padding: 1rem 0;
+
+    @include tablet {
+      display: none;
+      text-align: center;
     }
+  }
 
-    &__list-header {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1rem;
+  &__button-container {
+    display: flex;
+    flex: 0 1 25%;
+  }
+
+  &__button {
+    background-color: $primary-black;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    @include mobile__labels-buttons;
+    width: 100%;
+    height: 2.5rem;
+    padding: 0 2rem;
+    margin: 1rem 0;
+    border-radius: 0.25rem;
+
+    @include tablet {
+      @include cta;
+      @include desktop__labels-buttons;
     }
+  }
 
-    &__list-container {
+  &__button:hover {
+    background-color: $secondary-black;
+    cursor: pointer;
+  }
 
-        @include desktop {
-            flex: 3;
-        }
-    }
-
-    &__list-item {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-        }
-    }
-
-    &__info {
-        flex: 0 1 25%;
-    }
-
-    &__info:nth-child(2) {
-        font-weight: bold;
-    }
-
-    &__list-item:hover {
-        background-color: $secondary-alabaster;
-        cursor: pointer;
-    }
-
-    &__subheader {
-        @include mobile__body-copy;
-        color: $primary-silver;
-        text-transform: uppercase;
-        padding: 1rem 0;
-
-        @include tablet {
-            display: none;
-            text-align: center;
-        }
-    }
-
-    &__button-container {
-        display: flex;
-        flex: 0 1 25%;
-    }
-
-    &__button {
-        background-color: $primary-black;
-        color: white;
-        text-align: center;
-        text-transform: uppercase;
-        @include mobile__labels-buttons;
-        width: 100%;
-        height: 2.5rem;
-        padding: 0 2rem;
-        margin: 1rem 0;
-        border-radius: .25rem;
-
-        @include tablet {
-            @include cta;
-            @include desktop__labels-buttons;
-        }
-    }
-
-    &__button:hover {
-        background-color: $secondary-black;
-        cursor: pointer;
-    }
-
-    &__divider {
-        border: none;
-        border-top: .0625rem solid $secondary-mercury;
-        margin: .625rem 0;
-        width: 100%;
-    }
+  &__divider {
+    border: none;
+    border-top: 0.0625rem solid $secondary-mercury;
+    margin: 0.625rem 0;
+    width: 100%;
+  }
 }

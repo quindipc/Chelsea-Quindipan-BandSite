@@ -26,6 +26,27 @@ body {
   font-family: "AvenirNextLTPro";
 }
 
+button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+button:focus {
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
 .header {
   background: #323232;
   padding: 1rem 0;
@@ -205,7 +226,7 @@ body {
 .footer__title {
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
 }
 .footer__icon {
   flex-direction: row;
@@ -243,13 +264,6 @@ body {
   }
 }
 
-.hero__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: relative;
-}
 .hero__container-content {
   display: flex;
   flex-direction: column;
@@ -295,14 +309,14 @@ body {
 .hero__title {
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
   color: #FFFFFF;
 }
 @media screen and (min-width: 768px) {
   .hero__title {
     font-size: 60px;
     line-height: 68px;
-    font-weight: bold 700;
+    font-weight: 700;
   }
 }
 .hero__music {
@@ -337,13 +351,13 @@ body {
   padding: 1rem;
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
 }
 @media screen and (min-width: 1280px) {
   .shows__title {
     font-size: 36px;
     line-height: 44px;
-    font-weight: bold 700;
+    font-weight: 700;
     display: flex;
     flex: 1;
   }
@@ -387,6 +401,12 @@ body {
     align-items: center;
   }
 }
+.shows__list-item.selected {
+  background-color: #E1E1E1;
+}
+.shows__list-item.selected:hover {
+  background-color: #E1E1E1;
+}
 .shows__info {
   flex: 0 1 25%;
 }
@@ -422,7 +442,7 @@ body {
   text-transform: uppercase;
   font-size: 10px;
   line-height: 20px;
-  font-weight: bold 700;
+  font-weight: 700;
   width: 100%;
   height: 2.5rem;
   padding: 0 2rem;
@@ -438,7 +458,7 @@ body {
     border-radius: 0.25rem;
     font-size: 12px;
     line-height: 20px;
-    font-weight: bold 700;
+    font-weight: 700;
   }
 }
 .shows__button:hover {

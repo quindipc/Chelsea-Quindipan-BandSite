@@ -30,10 +30,9 @@ function fetchComments() {
             );
 
             // Loop over the comments
-            for (let i = comments.length - 1; i >= 0; i--) {
-                const comment = comments[i];
+            comments.reverse().forEach(comment => {
                 displayComment(comment, commentSection);
-            }
+            });
         })
         .catch((error) => {
             console.error(error);
@@ -110,15 +109,14 @@ function displayComment(comment, commentSection) {
     const dividerLineBottom = document.createElement("hr");
     dividerLineBottom.classList.add("commentsection__divider");
     commentItemList.appendChild(dividerLineBottom);
-
-
+    
     commentSection.appendChild(commentItemList);
 }
 
 // Add likes counter and append to like button
 function updateLikeCounter(commentId, likes) {
     const likeCounter = document.querySelector(`.commentsection__like-counter[data-comment-id="${commentId}"]`);
-    likeCounter.textContent = `${likes} likes`;
+    likeCounter.textContent = `${likes}`;
 }
 
 // Add delete function to delete the comment
@@ -152,7 +150,6 @@ function postComments(name, comment) {
         .post(`${BASE_URL}/comments?api_key=${API_KEY}`, {
             name: name,
             comment: comment,
-            // likes: likes,
         })
         .then(() => {
             const commentSection = document.querySelector(".commentsection__comments");
@@ -273,6 +270,9 @@ form.addEventListener("submit", (e) => {
     const actionsContainer = document.createElement("div");
     actionsContainer.classList.add("commentsection__actions-container");
     newComment.appendChild(actionsContainer);
+
+    // ID linked to individual comment for likes
+    newComment.dataset.commentId = comment.id;
 
     // Like
     const likeButton = document.createElement("div");

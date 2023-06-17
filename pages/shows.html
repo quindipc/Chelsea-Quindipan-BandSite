@@ -1,138 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../styles/shows.css">
+    <link rel="stylesheet" href="../styles/shows.css" />
     <title>Shows</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <!-- Header Section -->
     <header class="header">
-        <nav class="header__nav">
-            <div class="header__logo-container">
-                <a href="../index.html">
-                    <img src="../assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="header__logo">
-                </a>
-            </div>
-            <ul class="header__navlist">
-                <li class="header__navlist-item unactive"><a href="../index.html"
-                        class="header__navlist--hover">Biography</a></li>
-                <li class="header__navlist-item active"><a href="./shows.html" class="header__navlist--hover">Shows</a>
-                </li>
-            </ul>
-        </nav>
+      <nav class="header__nav">
+        <div class="header__logo-container">
+          <a href="../index.html">
+            <img
+              src="../assets/logos/Logo-bandsite.svg"
+              alt="Band Site Logo"
+              class="header__logo"
+            />
+          </a>
+        </div>
+        <ul class="header__navlist">
+          <li class="header__navlist-item unactive">
+            <a href="../index.html" class="header__navlist--hover">Biography</a>
+          </li>
+          <li class="header__navlist-item active">
+            <a href="./shows.html" class="header__navlist--hover">Shows</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero__container">
-                <div class="hero__container-image">
-                    <img src="../assets/images/hero-shows.jpg" alt="Hero image of crowd" class="hero__image">
-                </div>
-                <div class="hero__container-content">
-                    <div class="hero__container-header">
-                        <h2 class="hero__album">Beautiful Beasts Album</h2>
-                        <h1 class="hero__title">Queen of Yellow x For the Stings</h1>
-                    </div>
-                    <div>
-                         <iframe class="hero__music" scrolling="no" frameborder="no" allow="autoplay"
-                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1593401839&color=%23d7807c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-                    </div>
-                </div>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero__container">
+          <div class="hero__container-image">
+            <img
+              src="../assets/images/hero-shows.jpg"
+              alt="Hero image of crowd"
+              class="hero__image"
+            />
+          </div>
+          <div class="hero__container-content">
+            <div class="hero__container-header">
+              <h2 class="hero__album">Beautiful Beasts Album</h2>
+              <h1 class="hero__title">Queen of Yellow x For the Stings</h1>
             </div>
-        </section>
+            <div>
+              <iframe
+                class="hero__music"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1593401839&color=%23d7807c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <!-- JS and DOM Manipulation added here -->
-        <section class="shows">
-            <div class="shows__list"></div>
-        </section>
+      <!-- JS and DOM Manipulation added here -->
+      <section class="shows">
+        <div class="shows__list"></div>
+      </section>
     </main>
 
-    <!-- Footer Section -->
-    <footer class="footer">
+ <!-- Footer Section -->
+ <footer class="footer">
 
-        <div class="footer__container footer__container--one">
-            <div class="footer__container-icons">
-                <h2 class="footer__title">Get in Touch</h2>
-                <a href="https://www.instagram.com">
-                    <img src="../assets/icons/Icon-instagram.svg" alt="Instagram Icon" class="footer__icon">
-                </a>
-                <a href="https://www.facebook.com">
-                    <img src="../assets/icons/Icon-facebook.svg" alt="Facebook Icon" class="footer__icon">
-                </a>
-                <a href="https://www.twitter.com">
-                    <img src="../assets/icons/Icon-twitter.svg" alt="Twitter Icon" class="footer__icon">
-                </a>
-            </div>
-            <a href="../index.html">
-                <img src="../assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="footer__logo--tablet">
-            </a>
-        </div>
+  <div class="footer__container footer__container--one">
+      <h2 class="footer__title">Get in Touch</h2>
+      <div class="footer__container-icons">
+          <a href="https://www.instagram.com">
+              <img src="../assets/icons/Icon-instagram.svg" alt="Instagram Icon" class="footer__icon">
+          </a>
+          <a href="https://www.facebook.com">
+              <img src="../assets/icons/Icon-facebook.svg" alt="Facebook Icon" class="footer__icon">
+          </a>
+          <a href="https://www.twitter.com">
+              <img src="../assets/icons/Icon-twitter.svg" alt="Twitter Icon" class="footer__icon">
+          </a> 
+      </div>
+      <a href="../index.html">
+          <img src="../assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="footer__logo--tablet">
+      </a>
+  </div>
 
-        <div class="footer__container-contact">
-            <div class="footer__container">
-                <article class="footer__subheading-container">
-                    <h4 class="footer__subheading">Cam Adams</h4>
-                    <h4 class="footer__subheading">The Bees Knees Management</h4>
-                </article>
-                <article class="footer__info-container">
-                    <p class="footer__info">503 Broadway Penthouse,</p>
-                    <p class="footer__info">New York, NY 10012, USA</p>
-                </article>
-                <article class="footer__info--email">
-                    <p class="footer__info"><a href="mailto:info@thebeesknees.com"
-                            class="footer__mailto">info@thebeesknees.com</a></p>
-                </article>
-            </div>
+  <div class="footer__container-contact">
+      <div class="footer__container">
+          <article class="footer__subheading-container">
+              <h4 class="footer__subheading">Cam Adams</h4>
+              <h4 class="footer__subheading">The Bees Knees Management</h4>
+          </article>
+          <article class="footer__info-container">
+              <p class="footer__info">503 Broadway Penthouse,</p>
+              <p class="footer__info">New York, NY 10012, USA</p>
+          </article>
+          <article class="footer__info--email">
+              <p class="footer__info"><a href="mailto:info@thebeesknees.com"
+                      class="footer__mailto">info@thebeesknees.com</a></p>
+          </article>
+      </div>
 
-            <div class="footer__container footer__container--space">
-                <article class="footer__subheading-container">
-                    <h4 class="footer__subheading">Pearl Gregg</h4>
-                    <h4 class="footer__subheading">Limitless Artist Group</h4>
-                </article>
-                <article class="footer__info-container">
-                    <p class="footer__info">Booking Agent for</p>
-                    <p class="footer__info">US / South America / Japan</p>
-                </article>
-                <article class="footer__info-email">
-                    <p class="footer__info"><a href="mailto:pearl.gregg@limitlessag.com"
-                            class="footer__mailto">pearl.gregg@limitlessag.com</a></p>
-                </article>
-            </div>
+      <div class="footer__container footer__container--space">
+          <article class="footer__subheading-container">
+              <h4 class="footer__subheading">Pearl Gregg</h4>
+              <h4 class="footer__subheading">Limitless Artist Group</h4>
+          </article>
+          <article class="footer__info-container">
+              <p class="footer__info">Booking Agent for</p>
+              <p class="footer__info">US / South America / Japan</p>
+          </article>
+          <article class="footer__info-email">
+              <p class="footer__info"><a href="mailto:pearl.gregg@limitlessag.com"
+                      class="footer__mailto">pearl.gregg@limitlessag.com</a></p>
+          </article>
+      </div>
 
-            <div class="footer__container footer__container--space">
-                <article class="footer__subheading--container">
-                    <h4 class="footer__subheading">Carson Whyte</h4>
-                    <h4 class="footer__subheading">ARCH Entertainment</h4>
-                </article>
-                <article class="footer__info-container">
-                    <p class="footer__info">Booking Agent for</p>
-                    <p class="footer__info">UK / EU / AU</p>
-                </article>
-                <article class="footer__info-email">
-                    <p class="footer__info"><a href="mailto:cwhyte@archentertainment.com"
-                            class="footer__mailto">cwhyte@archentertainment.com</a></p>
-                </article>
-            </div>
-        </div>
+      <div class="footer__container footer__container--space">
+          <article class="footer__subheading--container">
+              <h4 class="footer__subheading">Carson Whyte</h4>
+              <h4 class="footer__subheading">ARCH Entertainment</h4>
+          </article>
+          <article class="footer__info-container">
+              <p class="footer__info">Booking Agent for</p>
+              <p class="footer__info">UK / EU / AU</p>
+          </article>
+          <article class="footer__info-email">
+              <p class="footer__info"><a href="mailto:cwhyte@archentertainment.com"
+                      class="footer__mailto">cwhyte@archentertainment.com</a></p>
+          </article>
+      </div>
+  </div>
 
-        <div class="footer__container-copyright">
-            <a href="../index.html">
-                <img src="../assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="footer__logo--mobile">
-            </a>
-            <p class="footer__copyright">Copyright The Bees Knees © 2021 All Rights Reserved</p>
-        </div>
-    </footer>
+  <div class="footer__container-copyright">
+      <a href="../index.html">
+          <img src="../assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="footer__logo--mobile">
+      </a>
+      <p class="footer__copyright">Copyright The Bees Knees © 2021 All Rights Reserved</p>
+  </div>
+</footer>
+
     <script src="../scripts/build-shows-page.js"></script>
-
-</body>
-
+  </body>
 </html>
