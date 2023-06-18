@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./styles/bio.css">
-
     <title>Band Site</title>
 </head>
 
@@ -16,7 +17,7 @@
         <nav class="header__nav">
             <div class="header__logo-container">
                 <a href="./index.html">
-                    <img src="../assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="header__logo">
+                    <img src="./assets/logos/Logo-bandsite.svg" alt="Band Site Logo" class="header__logo">
                 </a>
             </div>
             <ul class="header__navlist">
@@ -34,7 +35,7 @@
             <div class="hero__container">
                 <h1 class="hero__title">The Bees Knees</h1>
                 <div class="hero__container-image">
-                    <img src="../assets/images/hero-bio.jpg" alt="Hero Image of flowers" class="hero__image">
+                    <img src="./assets/images/hero-bio.jpg" alt="Hero Image of flowers" class="hero__image">
 
                 </div>
             </div>
@@ -44,7 +45,7 @@
         <section class="about">
             <h2 class="about__title">About the Musicians</h2>
             <div class="about__container">
-                <img src="../assets/images/band.jpg" alt="Band Image" class="about__image">
+                <img src="./assets/images/band.jpg" alt="Band Image" class="about__image">
                 <div class="about__container--text">
                     <h3 class="about__quote">“We push each other to be the best. It’s not uncommon for one of us to say
                         ‘this
@@ -130,10 +131,12 @@
 
     <!-- Footer Section -->
     <footer class="footer">
+<div class="footer__max-desktop">
+
 
         <div class="footer__container footer__container--one">
+            <h2 class="footer__title">Get in Touch</h2>
             <div class="footer__container-icons">
-                <h2 class="footer__title">Get in Touch</h2>
                 <a href="https://www.instagram.com">
                     <img src="./assets/icons/Icon-instagram.svg" alt="Instagram Icon" class="footer__icon">
                 </a>
@@ -202,6 +205,8 @@
             </a>
             <p class="footer__copyright">Copyright The Bees Knees © 2021 All Rights Reserved</p>
         </div>
+
+    </div>
     </footer>
 
     <script src="./scripts/index-page.js"></script>

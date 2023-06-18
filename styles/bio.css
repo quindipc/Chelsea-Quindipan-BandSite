@@ -26,6 +26,27 @@ body {
   font-family: "AvenirNextLTPro";
 }
 
+button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, transform 150ms ease;
+}
+
+button:focus {
+  outline-offset: -4px;
+}
+
+button:active {
+  transform: scale(0.99);
+}
+
 .header {
   background: #323232;
   padding: 1rem 0;
@@ -153,7 +174,7 @@ body {
   flex-direction: column;
   color: #FFFFFF;
   background-color: #323232;
-  padding: 1rem;
+  padding: 2.25rem 1rem;
   font-size: 13px;
   line-height: 18px;
   font-weight: 400;
@@ -184,6 +205,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: baseline;
+    margin-right: auto;
+    padding-top: 0.5rem;
+    padding-left: 4.6rem;
   }
 }
 @media screen and (min-width: 768px) {
@@ -202,7 +226,7 @@ body {
 .footer__title {
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
 }
 .footer__icon {
   flex-direction: row;
@@ -211,6 +235,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .footer__icon {
+    padding-top: 0;
     padding-left: 1rem;
   }
 }
@@ -242,7 +267,7 @@ body {
 .hero__title {
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
   position: absolute;
   z-index: 3;
   color: #FFFFFF;
@@ -255,7 +280,7 @@ body {
   .hero__title {
     font-size: 60px;
     line-height: 68px;
-    font-weight: bold 700;
+    font-weight: 700;
     padding: 2.25rem;
   }
 }
@@ -265,21 +290,21 @@ body {
 }
 @media screen and (min-width: 768px) {
   .about {
-    padding: 2.25rem 3rem;
+    padding: 3rem 2.25rem;
   }
 }
 .about__title {
   padding-bottom: 1rem;
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
 }
 @media screen and (min-width: 768px) {
   .about__title {
     padding-bottom: 2.25rem;
     font-size: 36px;
     line-height: 44px;
-    font-weight: bold 700;
+    font-weight: 700;
   }
 }
 .about__container {
@@ -324,12 +349,14 @@ body {
 }
 @media screen and (min-width: 768px) {
   .about__quote {
+    padding-top: 2.25rem;
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
   }
 }
 .about__quote-author {
+  padding-top: 1rem;
   font-size: 14px;
   line-height: 22px;
   font-weight: 600;
@@ -342,6 +369,7 @@ body {
 }
 @media screen and (min-width: 768px) {
   .about__subheading {
+    padding: 2.25rem 0 1rem;
     font-size: 24px;
     line-height: 32px;
     font-weight: 600;
@@ -374,21 +402,21 @@ body {
   padding-left: 1rem;
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
 }
 @media screen and (min-width: 768px) {
   .gallery__title {
     padding-left: 3.8rem;
     font-size: 36px;
     line-height: 44px;
-    font-weight: bold 700;
+    font-weight: 700;
   }
 }
 .gallery__container {
   display: flex;
   flex-direction: column;
   background-color: #FAFAFA;
-  padding-top: 1.5rem;
+  padding: 1.5rem 1rem;
 }
 @media screen and (min-width: 768px) {
   .gallery__container {
@@ -399,7 +427,7 @@ body {
   .gallery__container-images {
     display: flex;
     flex-wrap: wrap;
-    padding: 3rem;
+    padding: 2.25rem;
   }
 }
 .gallery__image {
@@ -444,13 +472,13 @@ body {
 .commentsection__title {
   font-size: 24px;
   line-height: 32px;
-  font-weight: bold 700;
+  font-weight: 700;
 }
 @media screen and (min-width: 768px) {
   .commentsection__title {
     font-size: 36px;
     line-height: 44px;
-    font-weight: bold 700;
+    font-weight: 700;
   }
 }
 .commentsection__avatar-container {
@@ -531,7 +559,7 @@ body {
   text-transform: uppercase;
   font-size: 10px;
   line-height: 20px;
-  font-weight: bold 700;
+  font-weight: 700;
   background-color: #323232;
   color: #FFFFFF;
   height: 2.5rem;
@@ -545,7 +573,7 @@ body {
   .commentsection__button {
     font-size: 12px;
     line-height: 20px;
-    font-weight: bold 700;
+    font-weight: 700;
     width: 9.375rem;
     margin-left: auto;
   }
@@ -573,4 +601,91 @@ body {
 }
 .commentsection__comment {
   padding: 1rem 2.25rem;
+}
+.commentsection__button {
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 20px;
+  font-weight: 700;
+  background-color: #323232;
+  color: #FFFFFF;
+  height: 2.5rem;
+  width: 9.375rem;
+  padding: 0 2rem;
+  margin: 1rem 0;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+@media screen and (min-width: 768px) {
+  .commentsection__button {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+    width: 9.375rem;
+    margin-left: auto;
+  }
+}
+.commentsection__actions-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 0;
+}
+.commentsection__like-counter {
+  color: #AFAFAF;
+  margin-right: auto;
+  padding-top: 0.5rem;
+}
+.commentsection__like {
+  margin: 0 1rem;
+  position: relative;
+  height: 25px;
+  width: 15px;
+  border-radius: 100px 100px 0 0;
+  transform: rotate(45deg);
+  transition: all 0.5s;
+  cursor: pointer;
+  background-color: #E1E1E1;
+}
+.commentsection__like::before {
+  content: "";
+  position: absolute;
+  background-color: #E1E1E1;
+  height: 25px;
+  width: 15px;
+  transform: rotate(-90deg);
+  border-radius: 100px 100px 0 0;
+  left: -5px;
+  top: 5px;
+  transition: all 0.5s;
+}
+.commentsection__like:hover, .commentsection__like:hover::before {
+  background-color: #D22D2D;
+  cursor: pointer;
+}
+.commentsection__delete {
+  position: relative;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  background-color: #E1E1E1;
+  border: none;
+}
+.commentsection__delete::before, .commentsection__delete::after {
+  position: absolute;
+  content: "";
+  width: 0.125rem;
+  height: 0.9375rem;
+  background-color: #FFFFFF;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.commentsection__delete::before {
+  transform: rotate(45deg);
+}
+.commentsection__delete::after {
+  transform: rotate(-45deg);
+}
+.commentsection__delete:hover {
+  background-color: #000000;
+  cursor: pointer;
 }/*# sourceMappingURL=bio.css.map */

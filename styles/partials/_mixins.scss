@@ -19,13 +19,13 @@
 @mixin mobile__page-header {
     font-size: 24px;
     line-height: 32px;
-    font-weight: bold 700;
+    font-weight: 700;
 }
 
 @mixin mobile__section-header {
     font-size: 24px;
     line-height: 32px;
-    font-weight: bold 700;
+    font-weight: 700;
 }
 
 @mixin mobile__subheader {
@@ -49,7 +49,7 @@
 @mixin mobile__labels-buttons {
     font-size: 10px;
     line-height: 20px;
-    font-weight: bold 700;
+    font-weight: 700;
 }
 
 
@@ -57,13 +57,13 @@
 @mixin desktop__page-header {
     font-size: 60px;
     line-height: 68px;
-    font-weight: bold 700;
+    font-weight: 700;
 }
 
 @mixin desktop__section-header {
     font-size: 36px;
     line-height: 44px;
-    font-weight: bold 700;
+    font-weight: 700;
 }
 
 @mixin desktop__subheader {
@@ -87,7 +87,7 @@
 @mixin desktop__labels-buttons {
     font-size: 12px;
     line-height: 20px;
-    font-weight: bold 700;
+    font-weight: 700;
 }
 
 
@@ -104,4 +104,22 @@
 @mixin divider {
     stroke-width: 1px;
     color: $secondary-mercury
+}
+
+
+//Button styles 
+@mixin button {
+        text-transform: uppercase;
+        @include mobile__labels-buttons;
+        background-color: $primary-black;
+        color: $primary-white;
+        @include cta;
+        width: 100%;
+
+
+        @include tablet {
+            @include desktop__labels-buttons;
+            width: 9.375rem;
+            margin-left: auto;
+        }
 }
